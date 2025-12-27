@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pusat Studi & Mitra Riset – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-deep: #1d4ed8;
+      --navy: #020617;
+      --navy-soft: #0b1120;
+      --bg: #f3f4f6;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.28);
+      --shadow-light: 0 14px 30px rgba(15, 23, 42, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary-deep); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* TOPBAR */
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      padding: 0.35rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 60;
+    }
+    .topbar-left, .topbar-right {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .topbar a { color: var(--muted); }
+    .topbar a:hover { color: var(--primary-deep); }
+
+    .btn-small {
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      background: #ffffff;
+      color: var(--primary-deep);
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+    .btn-small:hover {
+      background: var(--primary);
+      color: #0b1120;
+      text-decoration: none;
+    }
+
+    /* NAV */
+    header {
+      background: linear-gradient(90deg, #0b1120 0, #020617 40%, #1d4ed8 100%);
+      color: white;
+      position: sticky;
+      top: 2.1rem;
+      z-index: 50;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.4);
+    }
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.25rem;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .logo-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.82rem;
+    }
+    .nav-title span:nth-child(1) {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .nav-title span:nth-child(2) {
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.05rem;
+      align-items: center;
+      font-size: 0.86rem;
+    }
+    .nav-links a {
+      color: #e5e7eb;
+      position: relative;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: #ffffff; text-decoration: none; }
+    .nav-links a.active {
+      color: #bfdbfe;
+      font-weight: 600;
+    }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.35rem;
+      height: 2px;
+      border-radius: 999px;
+      background: #38bdf8;
+    }
+    .btn-primary-nav {
+      padding: 0.45rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid #bae6fd;
+      background: #bae6fd;
+      color: #0b1120;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .btn-primary-nav:hover {
+      background: #38bdf8;
+      text-decoration: none;
+    }
+
+    /* HERO – Pusat Studi & Mitra Riset (band strip image) */
+    .hero-center {
+      padding: 2.2rem 1.25rem 2.4rem;
+      background: radial-gradient(circle at top left, #1d4ed8 0, #0b1120 55%, #020617 100%);
+      color: #e5e7eb;
+    }
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      align-items: stretch;
+    }
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #bfdbfe;
+    }
+    .hero-main h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 2.8vw, 2.7rem);
+      color: #f9fafb;
+    }
+    .hero-main p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      max-width: 34rem;
+    }
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+    }
+    .hero-pill {
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(191,219,254,0.7);
+      background: rgba(15,23,42,0.6);
+      color: #e0f2fe;
+    }
+
+    .hero-strip {
+      border-radius: 26px;
+      overflow: hidden;
+      background: #020617;
+      border: 1px solid rgba(148,163,184,0.8);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+    }
+    .hero-strip-top {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 2px;
+    }
+    .hero-strip-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.1);
+    }
+    .hero-strip-bottom {
+      padding: 0.7rem 0.9rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .hero-strip-tag {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(191,219,254,0.7);
+      font-size: 0.75rem;
+    }
+
+    /* SUBNAV */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #0ea5e9;
+      border-color: #0284c7;
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.8rem 1.25rem 3.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.3rem;
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    section h2 .icon { font-size: 1.1rem; }
+    section p.section-intro {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* OVERVIEW */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.2fr);
+      gap: 1.2rem;
+      align-items: stretch;
+      font-size: 0.9rem;
+    }
+    .overview-text {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 1.3rem 1.4rem;
+      box-shadow: var(--shadow-light);
+      border: 1px solid rgba(226,232,240,0.9);
+    }
+    .overview-text ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.1rem;
+      color: #4b5563;
+    }
+    .overview-note {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #fefce8;
+      border: 1px solid #facc15;
+      font-size: 0.86rem;
+    }
+
+    /* DAFTAR PUSAT STUDI */
+    .center-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .center-list {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .center-card {
+      padding: 0.65rem 0.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .center-card:last-child { border-bottom: none; }
+    .center-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+    .center-desc {
+      font-size: 0.82rem;
+      color: #4b5563;
+      margin-top: 0.15rem;
+    }
+    .center-link {
+      margin-top: 0.25rem;
+      font-size: 0.8rem;
+    }
+    .center-link a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .center-tags {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #eff6ff;
+      border: 1px dashed #93c5fd;
+    }
+    .center-tags h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.96rem;
+    }
+    .center-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+    .center-tag {
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      color: #1e293b;
+    }
+
+    /* MAPPING PROGRAM STUDI – PUSAT STUDI */
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .mapping-table {
+      border-radius: var(--radius-xl);
+      padding: 0.9rem 1rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .mapping-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .mapping-table th,
+    .mapping-table td {
+      padding: 0.4rem 0.3rem;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+    .mapping-table th {
+      font-weight: 600;
+      color: #475569;
+    }
+    .mapping-legend {
+      border-radius: var(--radius-xl);
+      padding: 0.9rem 1rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    /* KOLABORASI & LINK EKSTERNAL */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .collab-panel {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .collab-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.96rem;
+    }
+    .collab-panel ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      color: #374151;
+    }
+    .collab-links {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: linear-gradient(135deg, #eff6ff 0, #e0f2fe 45%, #ecfeff 100%);
+      box-shadow: var(--shadow-light);
+    }
+    .collab-links ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      color: #1f2937;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .overview-grid,
+      .center-grid,
+      .mapping-grid,
+      .collab-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+      header { top: 3.1rem; }
+      .hero-strip-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#centers" class="btn-small">Daftar Pusat Studi</a>
+      <a href="#mapping" class="btn-small">Mapping ke Program Studi</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-circle">IPB</div>
+        <div class="nav-title">
+          <span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html" class="active">Penelitian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Beasiswa</a>
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-center">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="hero-kicker">RESEARCH ECOSYSTEM</div>
+        <h1>Pusat Studi & Mitra Riset</h1>
+        <p>
+          Pusat studi dan laboratorium mitra di lingkungan IPB University menjadi ekosistem utama
+          bagi mahasiswa pascasarjana untuk melakukan riset, magang riset, dan proyek kebijakan.
+        </p>
+        <div class="hero-pill-row">
+          <span class="hero-pill">Pusat Studi di lingkungan IPB</span>
+          <span class="hero-pill">Laboratorium & fasilitas mitra</span>
+          <span class="hero-pill">Proyek kolaborasi nasional & global</span>
+        </div>
+      </div>
+      <aside class="hero-strip">
+        <div class="hero-strip-top">
+          <img src="https://source.unsplash.com/600x400/?lab,science" alt="Lab 1" />
+          <img src="https://source.unsplash.com/600x400/?research,team" alt="Lab 2" />
+          <img src="https://source.unsplash.com/600x400/?meeting,collaboration" alt="Lab 3" />
+        </div>
+        <div class="hero-strip-bottom">
+          <span>
+            Ilustrasi kolaborasi pusat studi, laboratorium, dan mahasiswa pascasarjana dalam
+            riset dan proyek kebijakan.
+          </span>
+          <span class="hero-strip-tag">Centers · Labs · Policy Labs</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#centers" class="subnav-link">Daftar Pusat Studi</a>
+    <a href="#mapping" class="subnav-link">Mapping Program Studi – Pusat Studi</a>
+    <a href="#collab" class="subnav-link">Kolaborasi & Link Eksternal</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">📘</span> Posisi Pusat Studi & Lab Mitra dalam Ekosistem SPs IPB</h2>
+      <p class="section-intro">
+        Pusat studi dan laboratorium yang tercantum di halaman ini bukan unit struktural di bawah
+        Sekolah Pascasarjana, namun menjadi mitra utama dalam penyelenggaraan riset dan pembimbingan
+        mahasiswa S2 dan S3.
+      </p>
+
+      <div class="overview-grid">
+        <div class="overview-text">
+          <p>
+            SPs IPB bekerja sama dengan berbagai pusat studi, laboratorium, dan unit riset di IPB
+            maupun lembaga mitra untuk menyediakan lingkungan riset yang kaya dan relevan. Mahasiswa
+            dapat ditempatkan di pusat studi/lab mitra sesuai topik tesis/disertasi, melalui
+            koordinasi dengan program studi dan pembimbing.
+          </p>
+          <ul>
+            <li>Kolaborasi lintas fakultas dan departemen IPB.</li>
+            <li>Integrasi riset dengan proyek nasional dan internasional.</li>
+            <li>Pemanfaatan fasilitas riset yang dimiliki unit lain sebagai mitra.</li>
+            <li>Transparansi posisi kelembagaan melalui penjelasan dan link eksternal.</li>
+          </ul>
+        </div>
+        <aside class="overview-note">
+          <strong>Catatan penting:</strong>
+          <ul>
+            <li>Pusat studi tetap berada di bawah unit/fakultas asalnya.</li>
+            <li>Halaman ini berfungsi sebagai <em>portal informasi</em> dan pemetaan ekosistem riset.</li>
+            <li>Detail kelembagaan dan mandat formal mengacu pada website resmi masing-masing pusat studi.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- DAFTAR PUSAT STUDI -->
+    <section id="centers">
+      <h2><span class="icon">🏛️</span> Daftar Pusat Studi & Laboratorium Mitra</h2>
+      <p class="section-intro">
+        Contoh daftar pusat studi dan laboratorium mitra yang sering menjadi lokasi riset mahasiswa
+        SPs IPB. Informasi lengkap (mandat, struktur, kegiatan) dapat dilihat di website resmi
+        masing-masing melalui tautan eksternal.
+      </p>
+
+      <div class="center-grid">
+        <div class="center-list">
+          <div class="center-card">
+            <div class="center-name">Pusat Studi Lingkungan & Perubahan Iklim</div>
+            <div class="center-desc">
+              Fokus pada analisis risiko iklim, kebijakan lingkungan, dan pengelolaan SDA secara berkelanjutan.
+            </div>
+            <div class="center-link">
+              <a href="#" target="_blank" rel="noopener">
+                🔗 Kunjungi situs resmi pusat studi
+              </a>
+            </div>
+          </div>
+          <div class="center-card">
+            <div class="center-name">Pusat Studi Pangan & Gizi</div>
+            <div class="center-desc">
+              Mengkaji sistem pangan dari hulu ke hilir, keamanan pangan, dan gizi masyarakat di era perubahan iklim.
+            </div>
+            <div class="center-link">
+              <a href="#" target="_blank" rel="noopener">
+                🔗 Kunjungi situs resmi pusat studi
+              </a>
+            </div>
+          </div>
+          <div class="center-card">
+            <div class="center-name">Pusat Studi Pesisir, Laut, & Mangrove</div>
+            <div class="center-desc">
+              Meneliti ekosistem pesisir, blue carbon, dan tata kelola wilayah pesisir dan pulau-pulau kecil.
+            </div>
+            <div class="center-link">
+              <a href="#" target="_blank" rel="noopener">
+                🔗 Kunjungi situs resmi pusat studi
+              </a>
+            </div>
+          </div>
+          <div class="center-card">
+            <div class="center-name">Lab Agroklimat & Sistem Informasi Iklim</div>
+            <div class="center-desc">
+              Pengembangan model agroklimat, sistem peringatan dini, dan DSS untuk sektor pangan dan SDA.
+            </div>
+            <div class="center-link">
+              <a href="#" target="_blank" rel="noopener">
+                🔗 Kunjungi situs resmi laboratorium
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="center-tags">
+          <h3>Klaster Pusat Studi & Lab Mitra</h3>
+          <div class="center-tag-row">
+            <span class="center-tag">Iklim & Lingkungan</span>
+            <span class="center-tag">Pangan & Pertanian</span>
+            <span class="center-tag">Kelautan & Pesisir</span>
+            <span class="center-tag">Kesehatan & Risiko</span>
+            <span class="center-tag">Ekonomi & Kebijakan</span>
+          </div>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            <a href="#">Lihat daftar lengkap pusat studi & lab mitra yang terhubung dengan SPs IPB →</a>
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MAPPING PROGRAM STUDI – PUSAT STUDI -->
+    <section id="mapping">
+      <h2><span class="icon">🧭</span> Mapping Program Studi – Pusat Studi / Lab</h2>
+      <p class="section-intro">
+        Pemetaan berikut membantu calon mahasiswa dan pembimbing melihat kombinasi umum antara
+        program studi, pusat studi/lab mitra, dan tipe riset yang dikembangkan.
+      </p>
+
+      <div class="mapping-grid">
+        <div class="mapping-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Program Studi</th>
+                <th>Pusat Studi / Lab Mitra</th>
+                <th>Contoh Fokus Riset</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>S2 A</td>
+                <td>Pusat Studi Lingkungan & Perubahan Iklim</td>
+                <td>Analisis kebijakan iklim, instrumen ekonomi lingkungan, blue/green economy.</td>
+              </tr>
+              <tr>
+                <td>S2 B</td>
+                <td>Pusat Studi Pangan & Gizi · Lab Agroklimat</td>
+                <td>Risiko iklim terhadap produksi pangan, gizi, dan ketahanan pangan rumah tangga.</td>
+              </tr>
+              <tr>
+                <td>S3 A</td>
+                <td>Pusat Studi Iklim & Perubahan Global</td>
+                <td>Model kebijakan iklim, governance multi-level, dan negosiasi internasional.</td>
+              </tr>
+              <tr>
+                <td>Program Interdisiplin</td>
+                <td>Beberapa pusat studi lintas klaster</td>
+                <td>Topik lintas sektor: pangan–air–iklim, health–climate, atau ekonomi–lingkungan.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="mapping-legend">
+          <strong>Keterangan:</strong>
+          <ul style="margin:0.4rem 0 0;padding-left:1.1rem;">
+            <li>Mapping ini bersifat ilustratif; kombinasi aktual ditentukan bersama program studi dan pembimbing.</li>
+            <li>Penempatan mahasiswa di pusat studi/lab memerlukan persetujuan resmi dari unit terkait.</li>
+            <li>Detail prosedur dapat dilihat pada halaman
+              <a href="pendidikan.html#placement">Pendidikan → Penempatan Riset & Pusat Studi</a>.
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- KOLABORASI & LINK EKSTERNAL -->
+    <section id="collab">
+      <h2><span class="icon">🌐</span> Kolaborasi Riset & Tautan Eksternal</h2>
+      <p class="section-intro">
+        Kolaborasi dengan pusat studi dan laboratorium tidak hanya mendukung tesis/disertasi, tetapi
+        juga membuka peluang keterlibatan dalam proyek riset, policy lab, dan kegiatan pengabdian.
+      </p>
+
+      <div class="collab-grid">
+        <div class="collab-panel">
+          <h3>Ruang Kolaborasi</h3>
+          <ul>
+            <li>Proyek riset bersama antara SPs IPB, pusat studi, dan lembaga mitra.</li>
+            <li>Penelitian lapang dan lab yang dikaitkan dengan tugas akhir mahasiswa.</li>
+            <li>Policy lab untuk menguji dan mengembangkan rekomendasi kebijakan.</li>
+            <li>Short course dan summer school yang diorganisir bersama pusat studi.</li>
+          </ul>
+        </div>
+        <div class="collab-links">
+          <h3>Tautan Penting (Eksternal)</h3>
+          <ul>
+            <li><a href="#" target="_blank" rel="noopener">Portal resmi pusat studi di lingkungan IPB →</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Portal riset IPB University (research portal) →</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Daftar laboratorium dan fasilitas riset IPB →</a></li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Semua tautan eksternal akan membuka tab baru dan mengarah ke situs resmi unit terkait.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:#020617;color:#e5e7eb;padding:1.9rem 1.25rem 1.5rem;margin-top:1rem;">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1.5rem;font-size:0.84rem;">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <div class="logo-circle">IPB</div>
+          <div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Sekretariat Riset & Kolaborasi · Tel: (000) 000 000 · Email: riset.pasca@ipb.ac.id
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.45rem 1rem;">
+          <a href="index.html" style="color:#bfdbfe;">Beranda</a>
+          <a href="pendidikan.html" style="color:#bfdbfe;">Pendidikan</a>
+          <a href="penelitian.html" style="color:#bfdbfe;">Penelitian</a>
+          <a href="mahasiswa.html" style="color:#bfdbfe;">Mahasiswa</a>
+          <a href="internasional.html" style="color:#bfdbfe;">Internasional</a>
+          <a href="beasiswa.html" style="color:#bfdbfe;">Beasiswa</a>
+          <a href="dosen.html" style="color:#bfdbfe;">Dosen</a>
+          <a href="fasilitas.html" style="color:#bfdbfe;">Fasilitas</a>
+          <a href="alumni.html" style="color:#bfdbfe;">Alumni</a>
+        </div>
+        <div style="margin-top:0.75rem;color:#6b7280;font-size:0.78rem;">
+          © 2025 Sekolah Pascasarjana IPB University – Research Ecosystem.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

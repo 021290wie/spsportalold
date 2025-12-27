@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Penelitian – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* === Tambahan khusus halaman PENELITIAN (di atas style global) === */
+
+    .hero-research {
+      padding: 2.2rem 1.25rem 2.5rem;
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 55%, #0f172a 100%);
+      color: #e5e7eb;
+    }
+    .hero-research-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-research-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-research-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #f9fafb;
+    }
+    .hero-research-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #e5e7eb;
+      max-width: 34rem;
+    }
+    .hero-research-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a5b4fc;
+    }
+    .hero-research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-research-tag {
+      padding: 0.16rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(165,180,252,0.8);
+      background: rgba(15,23,42,0.6);
+      color: #e0e7ff;
+    }
+    .hero-research-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+
+    .hero-research-side {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.9);
+      box-shadow: var(--shadow-soft);
+      background: #020617;
+      display: grid;
+      grid-template-rows: 1.3fr 1.1fr;
+    }
+    .hero-research-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.08);
+    }
+    .hero-research-side-bottom {
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+    .hero-research-metric {
+      font-size: 0.78rem;
+      color: #cbd5f5;
+    }
+    .hero-research-metric strong {
+      display:block;
+      font-size:1rem;
+      color:#e5e7eb;
+    }
+
+    /* SUBNAV PENELITIAN */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #1d4ed8;
+      border-color: #1e40af;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    /* GRID: CLUSTER RISET & PUSAT STUDI */
+    .cluster-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .cluster-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .cluster-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .cluster-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 0.7rem;
+      margin-top: 0.6rem;
+    }
+    .cluster-card {
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.75rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      font-size: 0.8rem;
+    }
+    .cluster-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.84rem;
+    }
+
+    .center-panel {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.4);
+      color: #e5e7eb;
+      font-size: 0.84rem;
+    }
+    .center-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+    .center-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+    .center-badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #38bdf8;
+      background: rgba(15,23,42,0.7);
+      color: #e0f2fe;
+      font-size: 0.78rem;
+    }
+
+    /* OUTPUT & PUBLIKASI */
+    .output-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .output-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .output-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .output-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+    .output-stat {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: #4b5563;
+    }
+    .output-stat-item {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      white-space: nowrap;
+    }
+
+    .output-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      font-size: 0.84rem;
+    }
+
+    /* KOLABORASI & FUNDING */
+    .collab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .collab-card {
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 0.9rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.06);
+    }
+    .collab-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    /* DATA & INFRASTRUKTUR RISET */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .infra-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .infra-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+    }
+    .infra-panel ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+    .infra-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #eff6ff;
+      border: 1px dashed #93c5fd;
+      font-size: 0.84rem;
+    }
+
+    @media (max-width: 1024px) {
+      .cluster-grid-cards {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .collab-grid {
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .hero-research-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-research-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .cluster-grid,
+      .output-grid,
+      .infra-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .collab-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html" class="active">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO PENELITIAN -->
+  <section class="hero-research">
+    <div class="hero-research-inner">
+      <div class="hero-research-main">
+        <div class="hero-research-label">RESEARCH & IMPACT</div>
+        <h1>Riset Interdisipliner & Pusat Studi</h1>
+        <p>
+          Halaman Penelitian menampilkan peta riset, pusat studi, dan output ilmiah yang dihasilkan
+          dosen dan mahasiswa Sekolah Pascasarjana IPB, dari level lokal hingga global.
+        </p>
+        <div class="hero-research-tags">
+          <span class="hero-research-tag">Interdisciplinary research</span>
+          <span class="hero-research-tag">Policy-relevant</span>
+          <span class="hero-research-tag">Collaboration with partners</span>
+        </div>
+        <div class="hero-research-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('cluster').scrollIntoView({behavior:'smooth'})">
+            Lihat Cluster Riset & Pusat Studi
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('output').scrollIntoView({behavior:'smooth'})">
+            Jelajahi Output & Publikasi
+          </button>
+        </div>
+      </div>
+      <aside class="hero-research-side">
+        <img src="img/FAR_9261-scaled-2-1.jpg" alt="Ilustrasi Riset Pascasarjana" />
+        <div class="hero-research-side-bottom">
+          <div>
+            <strong>Ekosistem Penelitian SPs IPB</strong><br />
+            Riset menghubungkan kampus, kementerian, lembaga internasional, dan komunitas,
+            memperkuat posisi IPB sebagai research-based university.
+          </div>
+          <div class="hero-research-metric">
+            <strong>Fokus:</strong>
+            • Pangan & lingkungan<br />
+            • Iklim & bencana<br />
+            • Keanekaragaman hayati<br />
+            • Kebijakan & tata kelola
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#cluster" class="subnav-link">Cluster Riset & Pusat Studi</a>
+    <a href="#output" class="subnav-link">Output & Publikasi</a>
+    <a href="#collab" class="subnav-link">Kolaborasi & Pendanaan</a>
+    <a href="#infra" class="subnav-link">Data & Infrastruktur Riset</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW PENELITIAN -->
+    <section id="overview">
+      <h2><span class="icon">🧪</span> Gambaran Umum Penelitian SPs IPB</h2>
+      <p class="section-intro">
+        Penelitian di Sekolah Pascasarjana IPB bersifat interdisipliner, menghubungkan sains, kebijakan,
+        dan praktik di lapangan, dengan kontribusi langsung pada agenda pembangunan nasional dan global.
+      </p>
+      <p style="font-size:0.9rem;">
+        Dosen dan mahasiswa SPs IPB terlibat dalam berbagai proyek riset yang didanai oleh lembaga
+        nasional maupun internasional, termasuk kementerian, lembaga PBB, dan mitra universitas luar
+        negeri. Riset-riset ini melahirkan publikasi ilmiah, policy brief, model, dan prototipe yang
+        dapat dimanfaatkan untuk perencanaan dan pengambilan keputusan di berbagai sektor.
+      </p>
+    </section>
+
+    <!-- CLUSTER RISET & PUSAT STUDI -->
+    <section id="cluster">
+      <h2><span class="icon">🧬</span> Cluster Riset & Pusat Studi</h2>
+      <p class="section-intro">
+        Cluster riset dan pusat studi menjadi simpul penggerak penelitian pascasarjana, menghubungkan
+        dosen, mahasiswa, dan mitra dalam tema-tema prioritas.
+      </p>
+
+      <div class="cluster-grid">
+        <article class="cluster-panel">
+          <h3>Cluster Riset Interdisipliner</h3>
+          <p>
+            Cluster riset memfasilitasi integrasi antar program studi dan departemen, dengan fokus pada:
+          </p>
+          <div class="cluster-grid-cards">
+            <div class="cluster-card">
+              <strong>Lingkungan, Iklim & Bencana</strong>
+              Riset mengenai risiko iklim, adaptasi, mitigasi, dan tata kelola bencana yang melibatkan
+              model ilmiah dan kajian kebijakan.
+            </div>
+            <div class="cluster-card">
+              <strong>Pangan, Pertanian & Ketahanan Pangan</strong>
+              Analisis sistem pangan, produksi pertanian berkelanjutan, dan kebijakan ketahanan pangan.
+            </div>
+            <div class="cluster-card">
+              <strong>Keanekaragaman Hayati & Ekosistem</strong>
+              Kajian ekologi, konservasi, serta pemanfaatan berkelanjutan sumberdaya hayati tropis.
+            </div>
+            <div class="cluster-card">
+              <strong>Sosial, Ekonomi & Kebijakan Publik</strong>
+              Penelitian kebijakan publik, ekonomi sumberdaya, tata kelola lingkungan, dan pembangunan
+              wilayah.
+            </div>
+          </div>
+          <p style="margin-top:0.7rem;font-size:0.84rem;">
+            Masing-masing cluster dapat dikembangkan menjadi halaman khusus dengan daftar proyek
+            riset, dosen penanggung jawab, dan mahasiswa yang terlibat.
+          </p>
+        </article>
+
+        <aside class="center-panel">
+          <h3>Pusat Studi sebagai Hub Penelitian</h3>
+          <p>
+            Pusat studi di lingkungan IPB berperan sebagai <em>research hub</em> yang mempertemukan
+            tim dosen, mahasiswa, dan mitra. Informasi berikut dapat ditampilkan:
+          </p>
+          <div class="center-badges">
+            <span class="center-badge">Nama pusat studi & fokus bidang</span>
+            <span class="center-badge">Koordinator & tim inti</span>
+            <span class="center-badge">Proyek unggulan & mitra</span>
+            <span class="center-badge">Kesempatan bagi mahasiswa S2/S3</span>
+          </div>
+          <p style="margin-top:0.6rem;">
+            Integrasi Pusat Studi ke dalam halaman Penelitian memudahkan mahasiswa memilih topik
+            riset, mengenali calon pembimbing, dan mengakses proyek yang sedang berjalan.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OUTPUT & PUBLIKASI -->
+    <section id="output">
+      <h2><span class="icon">📄</span> Output Riset & Portal Publikasi</h2>
+      <p class="section-intro">
+        Output penelitian SPs IPB tidak hanya berupa publikasi jurnal, tetapi juga disertasi, tesis,
+        policy brief, laporan teknis, dan produk pengetahuan lainnya.
+      </p>
+
+      <div class="output-grid">
+        <article class="output-panel">
+          <h3>Jenis Output & Kanal Publikasi</h3>
+          <p>
+            Untuk meningkatkan visibilitas, portal penelitian dapat mengelompokkan output sebagai
+            berikut (contoh):
+          </p>
+          <ul class="output-list">
+            <li>Artikel jurnal nasional terakreditasi dan jurnal internasional bereputasi.</li>
+            <li>Disertasi dan tesis yang dapat diakses ringkasannya.</li>
+            <li>Policy brief dan laporan kebijakan yang ditujukan bagi pengambil keputusan.</li>
+            <li>Laporan teknis proyek, working paper, dan materi presentasi konferensi.</li>
+          </ul>
+          <div class="output-stat">
+            <span class="output-stat-item">Portal publikasi SPs → repository IPB</span>
+            <span class="output-stat-item">Highlight 10 riset terkini</span>
+            <span class="output-stat-item">Filter berdasarkan cluster & pusat studi</span>
+          </div>
+          <p style="margin-top:0.7rem;font-size:0.84rem;">
+            Dalam implementasi penuh, daftar publikasi dapat ditarik langsung dari repository IPB atau
+            sistem informasi riset yang sudah ada, dengan fitur pencarian dan filter yang ramah pengguna.
+          </p>
+        </article>
+
+        <aside class="output-side">
+          <strong>Etalase Riset Unggulan</strong>
+          <p style="margin-top:0.4rem;">
+            Halaman Penelitian dapat menampilkan beberapa riset unggulan (misal 5–8 proyek), lengkap
+            dengan:
+          </p>
+          <ul class="output-list">
+            <li>Judul, peneliti utama, dan tim mahasiswa.</li>
+            <li>Ringkasan singkat dan dampak yang dihasilkan.</li>
+            <li>Link ke publikasi, laporan lengkap, atau video singkat.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Riset unggulan ini membantu memperkuat citra SPs IPB di mata mitra dan calon mahasiswa.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- KOLABORASI & PENDANAAN -->
+    <section id="collab">
+      <h2><span class="icon">🤝</span> Kolaborasi, Pendanaan & Konsultansi</h2>
+      <p class="section-intro">
+        Penelitian di SPs IPB tumbuh melalui kolaborasi dengan kementerian, pemerintah daerah,
+        lembaga internasional, dan sektor swasta.
+      </p>
+
+      <div class="collab-grid">
+        <article class="collab-card">
+          <h3>Kerja Sama Riset</h3>
+          <p>
+            Halaman Penelitian dapat memuat daftar singkat kerja sama riset yang sedang dan pernah
+            dilakukan, misalnya dengan:
+          </p>
+          <ul class="output-list" style="margin-top:0.3rem;">
+            <li>Kementerian/Lembaga nasional.</li>
+            <li>Organisasi internasional dan lembaga pendanaan.</li>
+            <li>Universitas mitra luar negeri.</li>
+          </ul>
+        </article>
+
+        <article class="collab-card">
+          <h3>Pendanaan & Skema Hibah</h3>
+          <p>
+            Ringkasan skema pendanaan riset yang sering diakses oleh dosen dan mahasiswa:
+          </p>
+          <ul class="output-list" style="margin-top:0.3rem;">
+            <li>Hibah internal IPB dan nasional.</li>
+            <li>Skema pendanaan internasional dan fellowship riset.</li>
+            <li>Proyek konsultansi dengan mitra pemerintah dan swasta.</li>
+          </ul>
+        </article>
+
+        <article class="collab-card">
+          <h3>Peran Mahasiswa S2/S3</h3>
+          <p>
+            Mahasiswa pascasarjana dapat berperan sebagai peneliti utama pada tesis/disertasi, sekaligus
+            anggota tim dalam proyek yang lebih besar, sehingga:
+          </p>
+          <ul class="output-list" style="margin-top:0.3rem;">
+            <li>Meningkatkan tema disertasi/tesis yang relevan.</li>
+            <li>Membuka peluang publikasi bersama.</li>
+            <li>Memperluas jejaring profesional dan akademik.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- DATA & INFRASTRUKTUR RISET -->
+    <section id="infra">
+      <h2><span class="icon">💾</span> Data, Infrastruktur & Layanan Riset</h2>
+      <p class="section-intro">
+        Penelitian yang kuat memerlukan dukungan infrastruktur data, perangkat analisis, dan akses
+        ke fasilitas laboratorium maupun komputasi.
+      </p>
+
+      <div class="infra-grid">
+        <article class="infra-panel">
+          <h3>Infrastruktur & Data</h3>
+          <p>
+            Beberapa contoh fasilitas dan layanan yang dapat diinformasikan di halaman ini:
+          </p>
+          <ul>
+            <li>Akses ke database ilmiah dan jurnal internasional melalui perpustakaan IPB.</li>
+            <li>Fasilitas laboratorium, stasiun lapang, dan ruang kerja riset.</li>
+            <li>Layanan komputasi dan software analisis (misalnya GIS, statistik, pemodelan).</li>
+            <li>Repositori data penelitian dan guideline pengelolaan data (data management plan).</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Integrasi dengan halaman <a href="fasilitas.html">Fasilitas & Layanan</a> akan membantu
+            menyatukan informasi ruang, peralatan, dan tata cara peminjaman.
+          </p>
+        </article>
+
+        <aside class="infra-side">
+          <strong>Layanan Penunjang Riset</strong>
+          <p style="margin-top:0.4rem;">
+            Selain infrastruktur fisik, SPs IPB dapat menampilkan layanan seperti:
+          </p>
+          <ul>
+            <li>Clinic penulisan dan publikasi ilmiah.</li>
+            <li>Dukungan statistik dan metodologi.</li>
+            <li>Pelatihan software dan metode analisis mutakhir.</li>
+            <li>Dukungan administrasi untuk etika riset dan perizinan lapang.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Informasi terperinci dapat diarahkan ke halaman <a href="mahasiswa.html">Mahasiswa</a>
+            dan <a href="dosen.html">Dosen</a> untuk layanan yang lebih spesifik.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sekolah Pascasarjana IPB University – Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO / DASHBOARD TOP -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="hero-kicker">GRADUATE SCHOOL DASHBOARD</div>
+        <h1>Portal Sekolah Pascasarjana IPB University</h1>
+        <p>
+          Akses terintegrasi untuk pendidikan, riset, jejaring mahasiswa dan alumni, internasionalisasi,
+          beasiswa, serta fasilitas pendukung studi S2 dan S3.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Pendidikan berbasis riset</span>
+          <span class="hero-tag">Interdisipliner</span>
+          <span class="hero-tag">Kebijakan & praktik</span>
+        </div>
+        <div class="hero-actions">
+          <button class="hero-btn-primary" onclick="location.href='pendidikan.html'">
+            Lihat Program Pendidikan
+          </button>
+          <button class="hero-btn-secondary" onclick="location.href='penelitian.html'">
+            Jelajahi Riset & Publikasi
+          </button>
+        </div>
+      </div>
+      <aside class="hero-side">
+       <!-- <img src="https://source.unsplash.com/900x600/?university,graduation" alt="Kegiatan Pascasarjana" />
+        <img src="img/1.jpg" alt="Kegiatan Pascasarjana" />-->
+
+        <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 250px;
+    overflow: hidden;
+    
+  }
+
+  .slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .slider img.active {
+    opacity: 1;
+    z-index: 1;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+  <img src="img/DSC_0738.JPG" class="active" alt="Slide 1">
+  <img src="img/2.jpg" alt="Slide 2">
+  <img src="img/RFQ_0177 (1).JPG" alt="Slide 3">
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slider img');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 4000); // ganti waktu (ms)
+</script>
+
+
+        <div class="hero-side-bottom">
+          <div class="hero-mini">
+            <strong>Dekanat & Komunitas Pascasarjana</strong><br />
+            Dipimpin oleh Dekan dan Wakil Dekan yang aktif dalam riset dan kebijakan nasional,
+            didukung dosen promotor dan co-promotor lintas disiplin.
+          </div>
+          <div class="hero-mini-list">
+            <strong>Ringkasan cepat:</strong><br />
+            <a href="#">• Program S2 & S3 interdisipliner<br /></a>
+            <a href="#">• Proyek riset dengan mitra nasional & internasional<br /></a>
+            <a href="#">• Graduate Scholarship Collaboration Office<br /></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <!-- QUICK OVERVIEW: 4 KARTU UTAMA -->
+    <section id="overview">
+      <h2><span class="icon">📌</span> Sekilas Empat Pilar Utama</h2>
+      <p class="section-intro">
+        Akses cepat ke informasi inti Sekolah Pascasarjana: pendidikan, penelitian, kehidupan mahasiswa,
+        dan jejaring internasional.
+      </p>
+
+      <div class="overview-grid">
+        <article class="overview-card">
+          <div class="overview-label">Pendidikan</div>
+          <div class="overview-title">Program S2 & S3</div>
+          <div class="overview-desc">
+            Informasi program studi, kurikulum, struktur bimbingan, dan jalur fast track / double degree.
+          </div>
+          <a href="pendidikan.html" class="overview-link">Lihat detail pendidikan →</a>
+        </article>
+
+        <article class="overview-card">
+          <div class="overview-label">Penelitian</div>
+          <div class="overview-title">Riset & Publikasi</div>
+          <div class="overview-desc">
+            Peta riset, proyek unggulan, publikasi disertasi dan tesis, serta portal output akademik.
+          </div>
+          <a href="penelitian.html" class="overview-link">Masuk ke portal penelitian →</a>
+        </article>
+
+        <article class="overview-card">
+          <div class="overview-label">Mahasiswa</div>
+          <div class="overview-title">Life as Grad Student</div>
+          <div class="overview-desc">
+            Layanan akademik, dukungan bimbingan, komunitas ilmiah, dan kesempatan pengembangan diri.
+          </div>
+          <a href="mahasiswa.html" class="overview-link">Eksplor kehidupan mahasiswa →</a>
+        </article>
+
+        <article class="overview-card">
+          <div class="overview-label">Internasional</div>
+          <div class="overview-title">Global Engagement</div>
+          <div class="overview-desc">
+            Double/dual degree, joint supervision, visiting scholars, dan kerja sama internasional.
+          </div>
+          <a href="internasional.html" class="overview-link">Lihat peluang internasional →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PENDIDIKAN + BEASISWA SUMMARY -->
+    <section id="edu">
+      <h2><span class="icon">🎓</span> Pendidikan Pascasarjana & Beasiswa</h2>
+      <p class="section-intro">
+        Gambaran singkat ekosistem pendidikan dan dukungan pembiayaan melalui skema beasiswa nasional
+        dan internasional.
+      </p>
+
+      <div class="edu-grid">
+        <div class="edu-main">
+          <div>
+            <h3>Program S2 & S3 Berbasis Riset</h3>
+            <p style="font-size:0.86rem;color:#4b5563;">
+              Program magister dan doktor di SPs IPB mengintegrasikan penelitian mutakhir, kerja sama
+              lintas pusat studi, dan pembimbingan promotor-co promotor lintas disiplin.
+            </p>
+            <ul class="edu-degree-list">
+              <li>Program S2 dengan opsi tesis, riset terapan, atau kebijakan.</li>
+              <li>Program S3 dengan fokus disertasi yang terkait kebijakan dan proyek nyata.</li>
+              <li>Peluang joint supervision & co-tutelle dengan universitas mitra.</li>
+            </ul>
+            <p style="margin-top:0.5rem;font-size:0.84rem;">
+              <a href="pendidikan.html">Lihat semua program studi & struktur kurikulum →</a>
+            </p>
+          </div>
+          <aside class="edu-side">
+            <!--<img src="https://source.unsplash.com/600x400/?library,students" alt="Belajar Pascasarjana" />-->
+            <img src="img/2.jpg" alt="Belajar Pascasarjana" />
+            <div class="edu-side-caption">
+              Ilustrasi suasana belajar mahasiswa pascasarjana di perpustakaan dan ruang diskusi ilmiah.
+            </div>
+          </aside>
+        </div>
+
+        <div class="edu-right">
+          <article class="mini-card">
+            <h3>Graduate Scholarship Collaboration Office</h3>
+            <p>
+              Unit layanan yang membantu mahasiswa dan calon mahasiswa mengakses informasi dan
+              pendampingan beasiswa LPDP, skema IPB, serta fellowship internasional.
+            </p>
+            <p style="margin-top:0.4rem;font-size:0.8rem;">
+              <a href="beasiswa.html">Masuk ke portal Beasiswa & Fellowship →</a>
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Perencanaan Studi & Konsultasi</h3>
+            <p>
+              Layanan konsultasi rencana studi, pemilihan topik tesis/disertasi, dan peta publikasi
+              yang selaras dengan target karier akademik maupun profesional.
+            </p>
+            <p style="margin-top:0.4rem;font-size:0.8rem;">
+              <a href="mahasiswa.html">Lihat layanan untuk mahasiswa →</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH & IMPACT SUMMARY -->
+    <section id="research">
+      <h2><span class="icon">🧪</span> Research & Impact</h2>
+      <p class="section-intro">
+        Dashboard singkat untuk menggambarkan kekuatan riset, publikasi, dan kolaborasi dosen serta
+        mahasiswa pascasarjana.
+      </p>
+
+      <div class="research-grid">
+        <div class="research-main">
+          <p style="font-size:0.88rem;">
+            SPs IPB memfasilitasi berbagai riset lintas disiplin, mulai dari ketahanan pangan, perubahan
+            iklim, keanekaragaman hayati, hingga tata kelola lingkungan dan kebijakan publik.
+          </p>
+          <div class="research-cards">
+            <div class="research-card">
+              <strong>Cluster Riset Interdisipliner</strong>
+              Integrasi antar pusat studi dan departemen, memfasilitasi proyek multi-fakultas dengan
+              basis data riset yang terdokumentasi.
+            </div>
+            <div class="research-card">
+              <strong>Portal Publikasi & Disertasi</strong>
+              Akses ke ringkasan riset, disertasi, tesis, policy brief, dan publikasi jurnal yang
+              dihasilkan mahasiswa dan dosen.
+            </div>
+            <div class="research-card">
+              <strong>Kerja Sama & Konsultansi</strong>
+              Proyek dengan kementerian, lembaga internasional, dan mitra lain yang dapat diakses
+              sebagai referensi kerja sama baru.
+            </div>
+          </div>
+          <p style="margin-top:0.7rem;font-size:0.84rem;">
+            <a href="penelitian.html">Masuk ke halaman Penelitian & Publikasi →</a>
+          </p>
+        </div>
+        <aside class="research-side">
+          <strong>Dosen & Prominent Lecturers</strong>
+          <p style="margin-top:0.3rem;">
+            Halaman <em>Dosen</em> menampilkan biosketsa singkat, bidang keahlian, proyek riset, dan
+            kerja sama yang sedang berjalan, sehingga calon mahasiswa dan mitra dapat mengenali
+            ekosistem keilmuan SPs IPB.
+          </p>
+          <p style="margin-top:0.4rem;font-size:0.84rem;">
+            <a href="dosen.html">Lihat direktori dosen & promotor →</a>
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PEOPLE & NETWORK: Dosen, Mahasiswa, Alumni, Internasional -->
+    <section id="people">
+      <h2><span class="icon">👥</span> People, Network & Global Reach</h2>
+      <p class="section-intro">
+        Gambaran ringkas tentang siapa saja yang berada di ekosistem SPs IPB dan bagaimana mereka
+        terhubung satu sama lain.
+      </p>
+
+      <div class="people-grid">
+        <article class="people-card">
+          <!--<img src="https://source.unsplash.com/500x300/?professor,lecture" alt="Dosen" />-->
+          <img src="img/dosen.png" alt="Dosen" />
+          <div class="people-body">
+            <div class="people-title">Dosen & Promotor</div>
+            <div class="people-desc">
+              Profil singkat, topik riset, proyek, dan afiliasi mitra, memudahkan pencarian calon pembimbing.
+            </div>
+            <a href="dosen.html" class="people-link">Lihat direktori dosen →</a>
+          </div>
+        </article>
+
+        <article class="people-card">
+          <!--<img src="https://source.unsplash.com/500x300/?graduate,students" alt="Mahasiswa" />-->
+          <img src="img/mahasiswa1.png" alt="Mahasiswa" />
+          <div class="people-body">
+            <div class="people-title">Mahasiswa Pascasarjana</div>
+            <div class="people-desc">
+              Profil PhD, komunitas ilmiah, dan layanan pendukung (akademik, karier, dan wellbeing).
+            </div>
+            <a href="mahasiswa.html" class="people-link">Masuk ke halaman Mahasiswa →</a>
+          </div>
+        </article>
+
+        <article class="people-card">
+          <!--<img src="https://source.unsplash.com/500x300/?alumni,network" alt="Alumni" />-->
+          <img src="img/alumni1.png" alt="Alumni" />
+          <div class="people-body">
+            <div class="people-title">Alumni & Tracer Study</div>
+            <div class="people-desc">
+              Jaringan alumni, peta karier, kegiatan alumni, dan ruang kontribusi bagi kampus.
+            </div>
+            <a href="alumni.html" class="people-link">Lihat jejaring alumni →</a>
+          </div>
+        </article>
+
+        <article class="people-card">
+          <!--<img src="https://source.unsplash.com/500x300/?international,university" alt="International" />-->
+          <img src="img/RFQ_0177 (1).JPG" alt="International" />
+          <div class="people-body">
+            <div class="people-title">International Engagement</div>
+            <div class="people-desc">
+              Double/dual degree, joint supervision, visiting professor, dan proyek global.
+            </div>
+            <a href="internasional.html" class="people-link">Eksplor peluang internasional →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FACILITIES & SERVICES SUMMARY -->
+    <section id="facilities">
+      <h2><span class="icon">🏛️</span> Fasilitas & Layanan Pendukung</h2>
+      <p class="section-intro">
+        Ringkasan fasilitas fisik dan layanan akademik yang mendukung kegiatan belajar, riset, dan
+        sidang pascasarjana.
+      </p>
+
+      <div class="facility-grid">
+        <div class="facility-main">
+          <p style="font-size:0.88rem;">
+            Fasilitas utama mencakup ruang kuliah, ruang sidang tesis/disertasi, ruang diskusi, ruang
+            hybrid, serta akses ke perpustakaan dan laboratorium mitra IPB University.
+          </p>
+          <ul>
+            <li>Ruang kuliah & seminar dengan fasilitas presentasi.</li>
+            <li>Ruang sidang tesis/disertasi dengan pengaturan formal.</li>
+            <li>Ruang diskusi & co-working untuk kerja kelompok dan bimbingan.</li>
+            <li>Portal booking dan informasi jadwal penggunaan ruang.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            <a href="fasilitas.html">Masuk ke halaman Fasilitas & Layanan →</a>
+          </p>
+        </div>
+        <aside class="facility-side">
+          <strong>Quick links:</strong>
+          <ul style="margin:0.4rem 0 0;padding-left:1.1rem;">
+            <li><a href="fasilitas.html#booking">Booking ruang sidang & kuliah →</a></li>
+            <li><a href="fasilitas.html#services">Layanan akademik & IT →</a></li>
+            <li><a href="fasilitas.html#partners">Akses perpustakaan & lab mitra →</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

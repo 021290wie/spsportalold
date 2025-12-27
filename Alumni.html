@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Alumni – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Tambahan khusus halaman ALUMNI ===== */
+
+    .hero-alumni {
+      padding: 2.2rem 1.25rem 2.6rem;
+      background: radial-gradient(circle at top left, #f97316 0, #7c2d12 40%, #020617 100%);
+      color: #fffbeb;
+    }
+    .hero-alumni-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-alumni-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-alumni-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #fed7aa;
+    }
+    .hero-alumni-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #fff7ed;
+    }
+    .hero-alumni-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #fffbeb;
+      max-width: 36rem;
+    }
+    .hero-alumni-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-alumni-tag {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(254,215,170,0.9);
+      background: rgba(15,23,42,0.6);
+      color: #fffbeb;
+    }
+    .hero-alumni-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+    .hero-alumni-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #fed7aa;
+      max-width: 34rem;
+    }
+
+    .hero-alumni-side {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(248,250,252,0.6);
+      box-shadow: 0 24px 46px rgba(15,23,42,0.8);
+      background: #020617;
+      display: grid;
+      grid-template-rows: 1.5fr 1.1fr;
+    }
+    .hero-alumni-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 260px;
+      opacity: 0.96;
+    }
+    .hero-alumni-side-bottom {
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      color: #fffbeb;
+      background: linear-gradient(to right, rgba(15,23,42,0.98), rgba(124,45,18,0.8));
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    /* SUBNAV ALUMNI */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #f97316;
+      border-color: #ea580c;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    /* LAYOUT UMUM BAGIAN */
+    .alumni-two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .alumni-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .alumni-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .alumni-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+      font-size: 0.84rem;
+    }
+
+    /* GRID KISAH ALUMNI */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .story-card {
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 26px rgba(148,163,184,0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .story-photo {
+      width: 100%;
+      height: 150px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+    .story-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .story-body {
+      padding: 0.75rem 0.85rem 0.9rem;
+    }
+    .story-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111827;
+    }
+    .story-role {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.1rem;
+    }
+    .story-text {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: #374151;
+    }
+    .story-tags {
+      margin-top: 0.45rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+    }
+    .story-tag {
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+    }
+
+    /* METRIK & IMPACT */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .metric-card {
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 0.8rem;
+      background: #0f172a;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+      box-shadow: 0 16px 34px rgba(15,23,42,0.7);
+      text-align: left;
+    }
+    .metric-value {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fed7aa;
+    }
+    .metric-label {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    /* JEJARING & MENTORING */
+    .network-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .network-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+    .network-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .network-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #fffbeb;
+      border: 1px solid #fed7aa;
+      font-size: 0.84rem;
+      box-shadow: 0 14px 30px rgba(251,146,60,0.25);
+    }
+
+    /* KONTRIBUSI ALUMNI */
+    .contrib-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .contrib-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(148,163,184,0.2);
+    }
+    .contrib-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-alumni-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-alumni-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .alumni-two-col,
+      .network-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .story-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .contrib-grid {
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .story-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .metrics-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .contrib-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html" >Fasilitas</a>
+        <a href="alumni.html" class="active">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO ALUMNI -->
+  <section class="hero-alumni">
+    <div class="hero-alumni-inner">
+      <div class="hero-alumni-main">
+        <div class="hero-alumni-label">ALUMNI IMPACT & NETWORK</div>
+        <h1>Alumni Sekolah Pascasarjana IPB</h1>
+        <p>
+          Alumni SPs IPB berkiprah sebagai peneliti, pengambil kebijakan, pemimpin lembaga,
+          dan praktisi di berbagai sektor. Halaman ini menampilkan kisah, jejaring, dan kontribusi
+          mereka bagi ilmu pengetahuan dan pembangunan.
+        </p>
+        <div class="hero-alumni-tags">
+          <span class="hero-alumni-tag">Policy leaders</span>
+          <span class="hero-alumni-tag">Researchers & academics</span>
+          <span class="hero-alumni-tag">Practitioners & innovators</span>
+        </div>
+        <div class="hero-alumni-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('stories').scrollIntoView({behavior:'smooth'})">
+            Lihat Kisah Alumni
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('network').scrollIntoView({behavior:'smooth'})">
+            Jejaring & Mentoring Alumni
+          </button>
+        </div>
+        <div class="hero-alumni-note">
+          Ke depan, halaman ini dapat terhubung dengan sistem tracer study IPB, database alumni,
+          dan portal jejaring profesional (misalnya LinkedIn, asosiasi alumni).
+        </div>
+      </div>
+      <aside class="hero-alumni-side">
+        <img src="img/cropped-cropped-ukuran-testimoni-copy-scaled-1-2.jpg" alt="Alumni Pascasarjana" />
+        <div class="hero-alumni-side-bottom">
+          <div>
+            Alumni SPs IPB hadir di lembaga nasional, organisasi internasional, universitas, dan
+            sektor swasta – menjadi duta kualitas riset dan pendidikan IPB.
+          </div>
+          <div style="font-size:0.78rem;">
+            <strong>Fokus tampilan:</strong><br />
+            • Kisah & profil singkat<br />
+            • Jejaring dan mentoring<br />
+            • Kolaborasi alumni–kampus–mitra
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#stories" class="subnav-link">Kisah & Profil Alumni</a>
+    <a href="#impact" class="subnav-link">Impact & Persebaran Alumni</a>
+    <a href="#network" class="subnav-link">Jejaring & Mentoring</a>
+    <a href="#contrib" class="subnav-link">Kontribusi Alumni ke SPs</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">👥</span> Gambaran Umum Alumni SPs IPB</h2>
+      <p class="section-intro">
+        Alumni SPs IPB adalah bagian penting dari ekosistem akademik: mereka menjadi bukti kualitas
+        program, sekaligus mitra dalam merancang kebijakan, riset, dan pengembangan kompetensi.
+      </p>
+      <p style="font-size:0.9rem;">
+        Halaman ini dirancang bukan sekadar sebagai daftar nama, namun sebagai etalase dampak alumni
+        di berbagai level: lokal, nasional, regional, hingga global. Alumni dapat terlibat sebagai
+        pengajar tamu, mitra riset, narasumber kebijakan, maupun donor beasiswa untuk generasi
+        berikutnya.
+      </p>
+    </section>
+
+    <!-- KISAH & PROFIL ALUMNI -->
+    <section id="stories">
+      <h2><span class="icon">📖</span> Kisah Alumni & Profil Singkat</h2>
+      <p class="section-intro">
+        Contoh cara menampilkan etalase alumni lintas sektor. Nantinya dapat ditautkan ke profil
+        lengkap, wawancara, atau artikel khusus.
+      </p>
+
+      <div class="story-grid">
+        <!-- Alumni 1 -->
+        <article class="story-card">
+          <div class="story-photo">
+            <img src="https://source.unsplash.com/400x400/?executive,portrait" alt="Alumni 1" />
+          </div>
+          <div class="story-body">
+            <div class="story-name">Nama Alumni 1, Ph.D.</div>
+            <div class="story-role">Pejabat Tinggi di Lembaga Pemerintah Nasional</div>
+            <div class="story-text">
+              Lulusan program S3 yang memimpin penyusunan kebijakan strategis di bidang
+              lingkungan dan perubahan iklim, dengan basis riset yang dikembangkan selama studi di SPs IPB.
+            </div>
+            <div class="story-tags">
+              <span class="story-tag">Kebijakan publik</span>
+              <span class="story-tag">Lingkungan & iklim</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Alumni 2 -->
+        <article class="story-card">
+          <div class="story-photo">
+            <img src="https://source.unsplash.com/401x401/?researcher,portrait" alt="Alumni 2" />
+          </div>
+          <div class="story-body">
+            <div class="story-name">Nama Alumni 2, Ph.D.</div>
+            <div class="story-role">Peneliti Senior di Lembaga Riset Internasional</div>
+            <div class="story-text">
+              Memimpin proyek riset kolaboratif lintas negara tentang ketahanan pangan dan
+              sistem pertanian berkelanjutan, berangkat dari disertasi di SPs IPB.
+            </div>
+            <div class="story-tags">
+              <span class="story-tag">Riset internasional</span>
+              <span class="story-tag">Ketahanan pangan</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Alumni 3 -->
+        <article class="story-card">
+          <div class="story-photo">
+            <img src="https://source.unsplash.com/402x402/?teacher,lecture" alt="Alumni 3" />
+          </div>
+          <div class="story-body">
+            <div class="story-name">Nama Alumni 3, Dr.</div>
+            <div class="story-role">Dosen & Pengelola Program Pascasarjana di Universitas Mitra</div>
+            <div class="story-text">
+              Berkontribusi dalam pengembangan kurikulum dan pembimbingan mahasiswa S2/S3
+              di universitas lain, memperkuat jejaring akademik SPs IPB.
+            </div>
+            <div class="story-tags">
+              <span class="story-tag">Akademisi</span>
+              <span class="story-tag">Kurikulum & bimbingan</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:0.8rem;font-size:0.8rem;">
+        Dalam implementasi penuh, daftar alumni dapat diperluas dan difilter berdasarkan program
+        studi, tahun lulus, atau sektor kerja.
+      </p>
+    </section>
+
+    <!-- IMPACT & PERSEBARAN ALUMNI -->
+    <section id="impact">
+      <h2><span class="icon">🌍</span> Impact & Persebaran Alumni</h2>
+      <p class="section-intro">
+        Bagian ini dapat memvisualisasikan persebaran alumni secara geografis maupun sektoral,
+        sekaligus menampilkan ringkasan metrik utama.
+      </p>
+
+      <div class="alumni-two-col">
+        <article class="alumni-panel">
+          <h3>Persebaran Sektoral & Geografis</h3>
+          <p>
+            Deskripsi singkat (nantinya dapat dilengkapi peta interaktif atau diagram):
+          </p>
+          <ul class="network-list">
+            <li>Alumni di kementerian/lembaga dan pemerintah daerah.</li>
+            <li>Alumni di organisasi internasional dan lembaga PBB.</li>
+            <li>Alumni di universitas dan lembaga riset di dalam dan luar negeri.</li>
+            <li>Alumni di sektor swasta, NGO, dan think tank.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Visual seperti peta dunia/Indonesia dan chart sektoral dapat ditautkan dari hasil
+            tracer study dan database alumni IPB.
+          </p>
+        </article>
+
+        <aside class="alumni-side">
+          <strong>Metrik Singkat (Contoh Ilustratif)</strong>
+          <div class="metrics-grid" style="margin-top:0.55rem;">
+            <div class="metric-card">
+              <div class="metric-value">2.500+</div>
+              <div class="metric-label">Alumni S2/S3 SPs IPB</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">40+</div>
+              <div class="metric-label">Negara tempat alumni bekerja</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">60%</div>
+              <div class="metric-label">Alumni di sektor publik & akademik</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">40%</div>
+              <div class="metric-label">Alumni di sektor swasta, NGO, internasional</div>
+            </div>
+          </div>
+          <p style="margin-top:0.6rem;font-size:0.78rem;color:#e5e7eb;">
+            Angka-angka di atas dapat diganti dengan data resmi dari unit tracer study IPB.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- JEJARING & MENTORING -->
+    <section id="network">
+      <h2><span class="icon">🔗</span> Jejaring Alumni & Mentoring</h2>
+      <p class="section-intro">
+        SPs IPB dapat memfasilitasi interaksi alumni dengan mahasiswa dan dosen melalui berbagai
+        skema jejaring dan mentoring.
+      </p>
+
+      <div class="network-grid">
+        <article class="network-panel">
+          <h3>Skema Jejaring & Keterlibatan Alumni</h3>
+          <p>
+            Contoh format keterlibatan (ilustratif):
+          </p>
+          <ul class="network-list">
+            <li>Webinar alumni berbagi pengalaman akademik dan karier.</li>
+            <li>Mentoring karier dan riset untuk mahasiswa S2/S3.</li>
+            <li>Program magang dan penempatan kerja di institusi tempat alumni bekerja.</li>
+            <li>Kolaborasi riset dan penulisan bersama (joint publication, policy brief).</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Halaman ini juga dapat memuat tautan ke grup resmi alumni (misalnya asosiasi alumni,
+            kanal media sosial profesional).
+          </p>
+        </article>
+
+        <aside class="network-side">
+          <strong>Contoh Inisiatif Alumni Hub</strong>
+          <p style="margin-top:0.4rem;">
+            SPs IPB dapat mengembangkan “Alumni Hub” yang:
+          </p>
+          <ul class="network-list">
+            <li>Menjadi kanal komunikasi resmi antara alumni dan SPs.</li>
+            <li>Mengkurasi cerita dan peluang kolaborasi dari alumni.</li>
+            <li>Menyinkronkan informasi dengan kantor hubungan alumni di tingkat universitas.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Dalam implementasi penuh, pendaftaran alumni dan update profil dapat dilakukan melalui
+            formulir daring yang terhubung ke database IPB.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- KONTRIBUSI ALUMNI KE SPS -->
+    <section id="contrib">
+      <h2><span class="icon">🤝</span> Kontribusi Alumni bagi Sekolah Pascasarjana</h2>
+      <p class="section-intro">
+        Alumni dapat menjadi mitra strategis dalam pengembangan program, riset, dan dukungan
+        pembiayaan untuk generasi berikutnya.
+      </p>
+
+      <div class="contrib-grid">
+        <article class="contrib-card">
+          <h3>1. Pengembangan Program & Kurikulum</h3>
+          <p>
+            Alumni yang telah berkiprah di berbagai sektor dapat berkontribusi dalam:
+          </p>
+          <ul class="network-list">
+            <li>Memberi masukan terhadap kurikulum berbasis kebutuhan lapangan.</li>
+            <li>Menjadi pengajar tamu atau co-lecturer untuk mata kuliah tertentu.</li>
+            <li>Menghubungkan program dengan kebutuhan lembaga mitra.</li>
+          </ul>
+        </article>
+
+        <article class="contrib-card">
+          <h3>2. Kolaborasi Riset & Proyek</h3>
+          <p>
+            Alumni dapat membuka peluang:
+          </p>
+          <ul class="network-list">
+            <li>Proyek riset bersama dengan lembaga tempat mereka bekerja.</li>
+            <li>Proyek konsultansi yang melibatkan dosen dan mahasiswa SPs.</li>
+            <li>Publikasi bersama dan kontribusi pada laporan kebijakan.</li>
+          </ul>
+        </article>
+
+        <article class="contrib-card">
+          <h3>3. Dukungan Beasiswa & Karier</h3>
+          <p>
+            Bentuk kontribusi lainnya:
+          </p>
+          <ul class="network-list">
+            <li>Pendanaan beasiswa atau top-up research grant.</li>
+            <li>Dukungan untuk conference travel dan publikasi.</li>
+            <li>Program rekrutmen dan fast-track untuk lulusan SPs.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.82rem;">
+            Bagian ini dapat dihubungkan dengan halaman <a href="beasiswa.html">Beasiswa</a> dan
+            unit karier IPB.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

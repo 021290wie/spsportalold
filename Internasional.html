@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Internasional – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Tambahan khusus halaman INTERNASIONAL ===== */
+
+    .hero-intl {
+      padding: 2.2rem 1.25rem 2.6rem;
+      background: linear-gradient(135deg, #e0f2fe 0%, #f9fafb 55%, #dbeafe 100%);
+      color: #0f172a;
+    }
+    .hero-intl-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-intl-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-intl-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #1d4ed8;
+    }
+    .hero-intl-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #0f172a;
+    }
+    .hero-intl-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #4b5563;
+      max-width: 36rem;
+    }
+    .hero-intl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-intl-tag {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e3a8a;
+    }
+    .hero-intl-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+    .hero-intl-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .hero-intl-side {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 22px 44px rgba(148,163,184,0.55);
+      background: #000;
+    }
+    .hero-intl-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 360px;
+      opacity: 0.9;
+    }
+    .hero-intl-overlay-card {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      background: rgba(15,23,42,0.88);
+      color: #e5e7eb;
+      padding: 0.85rem 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(148,163,184,0.8);
+      max-width: 270px;
+      font-size: 0.8rem;
+      box-shadow: 0 16px 32px rgba(15,23,42,0.7);
+    }
+    .hero-intl-overlay-pill {
+      display:inline-block;
+      padding:0.12rem 0.55rem;
+      border-radius:999px;
+      background:#22c55e;
+      color:#022c22;
+      font-size:0.75rem;
+      margin-bottom:0.25rem;
+    }
+
+    /* SUBNAV INTERNASIONAL */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #1d4ed8;
+      border-color: #1e40af;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    /* LAYOUT UMUM BAGIAN */
+    .intl-two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .intl-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .intl-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .intl-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #eff6ff;
+      border: 1px dashed #93c5fd;
+      font-size: 0.84rem;
+    }
+    .intl-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+
+    /* GRID PROGRAM & MOBILITAS */
+    .intl-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .intl-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(148,163,184,0.22);
+    }
+    .intl-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    /* MITRA & NETWORK */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .partner-logos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.7rem;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+    .partner-logo-card {
+      border-radius: var(--radius-md);
+      padding: 0.5rem 0.6rem;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+      text-align: center;
+    }
+
+    /* VISITING & AFFILIATED */
+    .visiting-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .visiting-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .visiting-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+    }
+    .visiting-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+    .visiting-badge {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f3f4f6;
+      color: #111827;
+      font-size: 0.78rem;
+    }
+
+    /* LAYANAN & SUPPORT INTERNASIONAL */
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .support-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(148,163,184,0.22);
+    }
+    .support-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-intl-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .intl-two-col,
+      .partner-grid,
+      .visiting-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .intl-grid-3,
+      .support-grid {
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+      .partner-logos {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .intl-grid-3,
+      .support-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .partner-logos {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html" class="active">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO INTERNASIONAL -->
+  <section class="hero-intl">
+    <div class="hero-intl-inner">
+      <div class="hero-intl-main">
+        <div class="hero-intl-label">GLOBAL ENGAGEMENT</div>
+        <h1>Internasionalisasi di Sekolah Pascasarjana IPB</h1>
+        <p>
+          Halaman Internasional merangkum program double/dual degree, joint supervision, joint research,
+          visiting scholars, serta jejaring mitra global yang mendukung ekosistem riset dan pembelajaran
+          pascasarjana IPB.
+        </p>
+        <div class="hero-intl-tags">
+          <span class="hero-intl-tag">Double / Dual Degree</span>
+          <span class="hero-intl-tag">Joint supervision</span>
+          <span class="hero-intl-tag">Research collaboration</span>
+          <span class="hero-intl-tag">Global network</span>
+        </div>
+        <div class="hero-intl-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">
+            Program & Mobilitas Internasional
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('partners').scrollIntoView({behavior:'smooth'})">
+            Mitra & Jejaring Global
+          </button>
+        </div>
+        <div class="hero-intl-note">
+          Dalam implementasi penuh, halaman ini dapat terhubung langsung ke daftar MoU/MoA IPB,
+          database kerja sama, dan portal beasiswa internasional.
+        </div>
+      </div>
+      <aside class="hero-intl-side">
+        <img src="img/RFQ_0177 (1).JPG" alt="Jejaring Internasional Kampus" />
+        <div class="hero-intl-overlay-card">
+          <span class="hero-intl-overlay-pill">Global Graduate Network</span><br />
+          <strong style="font-size:0.86rem;">Kolaborasi lintas negara</strong><br />
+          <span style="font-size:0.78rem;">
+            Mahasiswa S2/S3 SPs IPB dapat bergabung dalam proyek riset, coursework, dan bimbingan
+            bersama mitra luar negeri melalui berbagai skema mobilitas.
+          </span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#programs" class="subnav-link">Program & Mobilitas</a>
+    <a href="#partners" class="subnav-link">Mitra & Jejaring</a>
+    <a href="#visiting" class="subnav-link">Visiting & Affiliated</a>
+    <a href="#support" class="subnav-link">Layanan & Dukungan</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW INTERNASIONAL -->
+    <section id="overview">
+      <h2><span class="icon">🌍</span> Gambaran Umum Internasionalisasi SPs IPB</h2>
+      <p class="section-intro">
+        Internasionalisasi di SPs IPB mencakup pengembangan kurikulum, mobilitas mahasiswa dan dosen,
+        riset bersama, dan penguatan peran IPB di komunitas akademik global.
+      </p>
+      <p style="font-size:0.9rem;">
+        Melalui kerja sama dengan universitas, lembaga riset, dan organisasi internasional, mahasiswa
+        S2 dan S3 memiliki kesempatan untuk mengikuti coursework di luar negeri, terlibat dalam joint
+        research, atau menjalani bimbingan bersama (joint supervision). Halaman ini dapat menjadi
+        titik temu informasi untuk semua inisiatif tersebut, sekaligus menunjukkan branding IPB
+        sebagai research-based university dengan jejaring global yang kuat.
+      </p>
+    </section>
+
+    <!-- PROGRAM & MOBILITAS -->
+    <section id="programs">
+      <h2><span class="icon">✈️</span> Program Internasional & Mobilitas Mahasiswa</h2>
+      <p class="section-intro">
+        Berbagai skema mobilitas memungkinkan mahasiswa memperluas pengalaman akademik, jaringan, dan
+        eksposur global selama studi pascasarjana.
+      </p>
+
+      <div class="intl-grid-3">
+        <article class="intl-card">
+          <h3>Double / Dual Degree & Joint Programme</h3>
+          <p>
+            Halaman ini dapat menampilkan daftar program:
+          </p>
+          <ul class="intl-list" style="margin-top:0.3rem;">
+            <li>Double degree (gelar dari IPB dan universitas mitra).</li>
+            <li>Dual degree atau joint programme dengan kurikulum terintegrasi.</li>
+            <li>Skema credit transfer dan pengakuan kredit (credit earning).</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Setiap program dapat dilengkapi dengan link ke halaman detail, persyaratan, dan timeline pendaftaran.
+          </p>
+        </article>
+
+        <article class="intl-card">
+          <h3>Joint Supervision & Co-tutelle</h3>
+          <p>
+            Bagi mahasiswa S3, joint supervision memungkinkan:
+          </p>
+          <ul class="intl-list" style="margin-top:0.3rem;">
+            <li>Bimbingan bersama promotor IPB dan mitra luar negeri.</li>
+            <li>Akses ke fasilitas dan data di kedua institusi.</li>
+            <li>Peluang publikasi dan jaringan riset internasional.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Informasi skema co-tutelle, MoU, dan prosedur administratif dapat dihubungkan dari sini.
+          </p>
+        </article>
+
+        <article class="intl-card">
+          <h3>Short Course, Summer School & Field School</h3>
+          <p>
+            Kegiatan jangka pendek seperti:
+          </p>
+          <ul class="intl-list" style="margin-top:0.3rem;">
+            <li>Summer/winter course tematik (iklim, pangan, lingkungan, dll.).</li>
+            <li>Field school bersama universitas mitra di dalam dan luar negeri.</li>
+            <li>Workshop dan training bersama lembaga internasional.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Kalender singkat kegiatan dan link pendaftaran dapat ditampilkan di sini.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MITRA & JEJARING -->
+    <section id="partners">
+      <h2><span class="icon">🤝</span> Mitra Internasional & Jejaring Global</h2>
+      <p class="section-intro">
+        Jejaring global SPs IPB dibangun melalui MoU/MoA dengan universitas dan lembaga riset di
+        berbagai negara.
+      </p>
+
+      <div class="partner-grid">
+        <article class="intl-panel">
+          <h3>Peta Jejaring & Kolaborasi</h3>
+          <p>
+            Halaman ini dapat memuat ringkasan:
+          </p>
+          <ul class="intl-list">
+            <li>Negara-negara mitra dan jenis kerja sama (pendidikan, riset, pengabdian).</li>
+            <li>Universitas dan lembaga riset mitra utama.</li>
+            <li>Proyek joint research dan programme yang sedang berjalan.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Visualisasi seperti peta dunia interaktif atau daftar mitra berdasarkan wilayah dapat
+            membantu pengunjung memahami jangkauan global SPs IPB.
+          </p>
+        </article>
+
+        <aside class="intl-side">
+          <strong>Contoh Kategori Mitra (Ilustratif)</strong>
+          <div class="partner-logos">
+            <div class="partner-logo-card">Universitas Asia</div>
+            <div class="partner-logo-card">Universitas Eropa</div>
+            <div class="partner-logo-card">Universitas Amerika</div>
+            <div class="partner-logo-card">Lembaga Riset Global</div>
+            <div class="partner-logo-card">Organisasi PBB/Internasional</div>
+            <div class="partner-logo-card">NGO & Think Tank</div>
+          </div>
+          <p style="margin-top:0.6rem;font-size:0.8rem;">
+            Dalam implementasi penuh, setiap kartu dapat berisi logo, nama institusi, dan link
+            ke ringkasan kerja sama.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- VISITING SCHOLARS & AFFILIATED PROFESSORS -->
+    <section id="visiting">
+      <h2><span class="icon">🎓</span> Visiting Scholars & Affiliated Professors</h2>
+      <p class="section-intro">
+        Kehadiran profesor tamu dan affiliated professors memperkaya ekosistem akademik dan membuka
+        peluang kolaborasi baru.
+      </p>
+
+      <div class="visiting-grid">
+        <article class="visiting-panel">
+          <h3>Peran Visiting & Affiliated Professors</h3>
+          <p>
+            Informasi berikut dapat ditampilkan untuk setiap akademisi tamu:
+          </p>
+          <ul class="intl-list">
+            <li>Nama, institusi asal, dan bidang keahlian.</li>
+            <li>Kuliah tamu, short course, atau seminar yang diampu.</li>
+            <li>Keterlibatan dalam bimbingan mahasiswa dan riset bersama.</li>
+          </ul>
+          <div class="visiting-badges">
+            <span class="visiting-badge">Visiting professor</span>
+            <span class="visiting-badge">Affiliated professor</span>
+            <span class="visiting-badge">Visiting researcher</span>
+            <span class="visiting-badge">Adjunct faculty</span>
+          </div>
+        </article>
+
+        <aside class="intl-side">
+          <strong>Etalase Akademisi Tamu</strong>
+          <p style="margin-top:0.4rem;">
+            Halaman ini dapat menampilkan beberapa profil singkat (tanpa harus sangat detail di
+            halaman utama), dengan link ke profil lengkap di halaman Dosen atau situs mitra.
+          </p>
+          <p style="margin-top:0.4rem;font-size:0.84rem;">
+            Integrasi dengan halaman <a href="dosen.html">Dosen & Promotor</a> akan memudahkan
+            mahasiswa menemukan potensi pembimbing dan kolaborator internasional.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- LAYANAN & DUKUNGAN INTERNASIONAL -->
+    <section id="support">
+      <h2><span class="icon">🧭</span> Layanan & Dukungan Internasional</h2>
+      <p class="section-intro">
+        Mobilitas internasional membutuhkan dukungan administratif dan bimbingan yang jelas,
+        baik bagi mahasiswa Indonesia ke luar negeri maupun mahasiswa asing ke IPB.
+      </p>
+
+      <div class="support-grid">
+        <article class="support-card">
+          <h3>Informasi Visa, Izin Tinggal & Dokumen</h3>
+          <p>
+            Halaman ini dapat menautkan panduan resmi terkait:
+          </p>
+          <ul class="intl-list" style="margin-top:0.3rem;">
+            <li>Proses visa studi dan izin tinggal mahasiswa asing.</li>
+            <li>Surat-surat resmi yang dibutuhkan (LoA, surat keterangan studi, dsb.).</li>
+            <li>Kontak unit terkait di IPB dan pemerintah.</li>
+          </ul>
+        </article>
+
+        <article class="support-card">
+          <h3>Orientasi & Integrasi Budaya</h3>
+          <p>
+            Layanan untuk membantu mahasiswa asing dan mahasiswa IPB yang akan ke luar negeri:
+          </p>
+          <ul class="intl-list" style="margin-top:0.3rem;">
+            <li>Program orientasi internasional untuk mahasiswa baru.</li>
+            <li>Informasi kehidupan kampus dan lingkungan sekitar.</li>
+            <li>Sesi persiapan budaya dan akademik sebelum keberangkatan.</li>
+          </ul>
+        </article>
+
+        <article class="support-card">
+          <h3>Beasiswa & Graduate Scholarship Collaboration Office</h3>
+          <p>
+            Graduate Scholarship Collaboration Office dapat memainkan peran kunci dalam:
+          </p>
+          <ul class="intl-list" style="margin-top:0.3rem;">
+            <li>Mengidentifikasi beasiswa internasional yang relevan.</li>
+            <li>Mendampingi proses aplikasi (proposal, CV, rekomendasi).</li>
+            <li>Menghubungkan mahasiswa dengan peluang fellowship dan riset global.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            <a href="beasiswa.html">Masuk ke halaman Beasiswa & Collaboration Office →</a>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

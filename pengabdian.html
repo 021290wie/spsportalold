@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pengabdian – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ====== GAYA KHUSUS HALAMAN PENGABDIAN ====== */
+
+    .hero-outreach {
+      padding: 2.2rem 1.25rem 2.5rem;
+      background: radial-gradient(circle at top left, #22c55e 0, #f9fafb 52%, #dcfce7 100%);
+      color: #0f172a;
+    }
+
+    .hero-outreach-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+
+    .hero-outreach-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .hero-outreach-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #15803d;
+    }
+
+    .hero-outreach-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.5vw, 2.5rem);
+      color: #0f172a;
+    }
+
+    .hero-outreach-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #4b5563;
+      max-width: 38rem;
+    }
+
+    .hero-outreach-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .hero-outreach-tag {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #bbf7d0;
+      background: #dcfce7;
+      color: #14532d;
+    }
+
+    .hero-outreach-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      padding: 0.45rem 1.1rem;
+    }
+
+    .hero-btn-primary {
+      background:#22c55e;
+      color:#022c22;
+      font-weight:600;
+    }
+
+    .hero-btn-secondary {
+      background:transparent;
+      border:1px solid #22c55e;
+      color:#14532d;
+      font-weight:500;
+    }
+
+    .hero-outreach-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .hero-outreach-side {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid #d4d4d8;
+      box-shadow: 0 20px 40px rgba(148,163,184,0.45);
+      background: #ffffff;
+      display: grid;
+      grid-template-rows: 1.4fr 1.1fr;
+    }
+
+    .hero-outreach-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-outreach-side-bottom {
+      padding: 0.9rem 1rem;
+      font-size: 0.8rem;
+      color: #374151;
+      background: #f9fafb;
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .hero-outreach-pill {
+      display:inline-block;
+      padding:0.12rem 0.55rem;
+      border-radius:999px;
+      background:#dcfce7;
+      color:#166534;
+      font-size:0.75rem;
+      margin-bottom:0.25rem;
+    }
+
+    /* SUBNAV PENGABDIAN */
+
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d4d4d8;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+
+    .subnav-link:hover {
+      border-color: #22c55e;
+      color: #14532d;
+      text-decoration: none;
+    }
+
+    .subnav-link.active {
+      background: #22c55e;
+      border-color: #16a34a;
+      color: #022c22;
+      font-weight: 600;
+    }
+
+    /* KONTEN UTAMA */
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.8rem 1.25rem 2.6rem;
+    }
+
+    main section {
+      margin-bottom: 2.2rem;
+    }
+
+    main h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem;
+      color: #0f172a;
+    }
+
+    .section-intro {
+      font-size: 0.9rem;
+      color: #4b5563;
+      max-width: 40rem;
+      margin: 0 0 0.8rem;
+    }
+
+    .icon {
+      margin-right: 0.3rem;
+    }
+
+    .outreach-two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+
+    .outreach-panel {
+      border-radius: 1rem;
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+    }
+
+    .outreach-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .outreach-side {
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px dashed #d4d4d8;
+      font-size: 0.84rem;
+    }
+
+    .outreach-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+
+    /* GRID PROGRAM / KARTU */
+
+    .outreach-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+      font-size: 0.84rem;
+    }
+
+    .outreach-card {
+      border-radius: 0.95rem;
+      padding: 0.95rem 1rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(148,163,184,0.22);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .outreach-card h3 {
+      margin: 0 0 0.25rem;
+      font-size: 0.96rem;
+      color: #0f172a;
+    }
+
+    .outreach-tagline {
+      font-size: 0.78rem;
+      color: #15803d;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .outreach-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .outreach-pill {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* LIVING LAB SECTION */
+
+    .livinglab-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1.3fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+
+    .livinglab-visual {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 16px 32px rgba(22,101,52,0.45);
+      background:#000;
+    }
+
+    .livinglab-visual img {
+      width: 100%;
+      height: 100%;
+      max-height: 260px;
+      object-fit: cover;
+    }
+
+    /* PETA PROGRAM & MITRA */
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.2fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+
+    .partner-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .partner-table th,
+    .partner-table td {
+      border: 1px solid #e5e7eb;
+      padding: 0.4rem 0.5rem;
+      text-align: left;
+    }
+
+    .partner-table th {
+      background: #f3f4f6;
+      font-weight: 600;
+    }
+
+    .partner-badge-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.35rem;
+      margin-top:0.4rem;
+    }
+
+    .partner-badge {
+      font-size:0.75rem;
+      padding:0.15rem 0.55rem;
+      border-radius:999px;
+      background:#eff6ff;
+      color:#1d4ed8;
+      border:1px solid #bfdbfe;
+    }
+
+    /* CTA */
+
+    .outreach-cta {
+      border-radius: 1.1rem;
+      padding: 1.2rem 1.3rem;
+      background: linear-gradient(135deg, #bef264, #22c55e);
+      color: #022c22;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .outreach-cta h2 {
+      margin: 0 0 0.2rem;
+      font-size: 1.2rem;
+      color:#022c22;
+    }
+
+    .outreach-cta p {
+      margin: 0;
+      font-size: 0.9rem;
+      max-width: 32rem;
+    }
+
+    .outreach-cta-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.5rem;
+    }
+
+    .outreach-cta-btn {
+      border-radius:999px;
+      border:none;
+      padding:0.45rem 1.2rem;
+      cursor:pointer;
+      font-size:0.86rem;
+      font-weight:600;
+    }
+
+    .outreach-cta-btn.primary {
+      background:#022c22;
+      color:#ecfdf5;
+    }
+
+    .outreach-cta-btn.secondary {
+      background:transparent;
+      border:1px solid #022c22;
+      color:#022c22;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero-outreach-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-outreach-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .outreach-two-col,
+      .livinglab-grid,
+      .partner-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .outreach-grid-3 {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .outreach-grid-3 {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html" class="active">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO PENGABDIAN -->
+  <section class="hero-outreach">
+    <div class="hero-outreach-inner">
+      <div class="hero-outreach-main">
+        <div class="hero-outreach-label">COMMUNITY-ENGAGED SCHOLARSHIP</div>
+        <h1>Pengabdian & Community Outreach Sekolah Pascasarjana</h1>
+        <p>
+          Halaman ini menampilkan bagaimana mahasiswa dan dosen Sekolah Pascasarjana IPB
+          berkolaborasi dengan masyarakat, pemerintah, dan industri untuk menciptakan dampak nyata
+          – sejalan dengan arah IPB sebagai Innopreneur University.
+        </p>
+        <div class="hero-outreach-tags">
+          <span class="hero-outreach-tag">Community-engaged research</span>
+          <span class="hero-outreach-tag">Innopreneurship</span>
+          <span class="hero-outreach-tag">Policy & practice</span>
+        </div>
+        <div class="hero-outreach-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('program').scrollIntoView({behavior:'smooth'})">
+            Lihat Program Pengabdian
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('livinglab').scrollIntoView({behavior:'smooth'})">
+            Living Lab & Field School
+          </button>
+        </div>
+        <div class="hero-outreach-note">
+          Program pengabdian dirancang terintegrasi dengan riset dan pendidikan sehingga Tridharma
+          berjalan serempak: mahasiswa belajar, meneliti, dan berkontribusi bagi masyarakat.
+        </div>
+      </div>
+      <aside class="hero-outreach-side">
+        <img src="img/alumni1.png" alt="Pengabdian Masyarakat" />
+        <div class="hero-outreach-side-bottom">
+          <div>
+            <span class="hero-outreach-pill">Community Outreach</span><br />
+            Kegiatan bersama petani, nelayan, UMKM, pemerintah daerah, dan komunitas lokal
+            untuk menguji dan mengadopsi inovasi IPB di lapangan.
+          </div>
+          <div>
+            <strong style="font-size:0.85rem;">Contoh fokus:</strong><br />
+            • Ketahanan pangan & iklim<br />
+            • Blue carbon & pesisir<br />
+            • One Health & kesehatan masyarakat<br />
+            • Inovasi bisnis sosial dan start-up berbasis riset
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#program" class="subnav-link">Program Pengabdian</a>
+    <a href="#livinglab" class="subnav-link">Living Lab & Field School</a>
+    <a href="#policy" class="subnav-link">Policy & Governance Outreach</a>
+    <a href="#mitra" class="subnav-link">Mitra & Peta Program</a>
+    <a href="#cta" class="subnav-link">Bergabung & Kolaborasi</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">🌱</span> Pengabdian sebagai Bagian dari Tridharma & Innopreneurship</h2>
+      <p class="section-intro">
+        Pengabdian di Sekolah Pascasarjana tidak berdiri sendiri, tetapi dirancang sebagai
+        community-engaged scholarship: menghubungkan pembelajaran, riset, dan inovasi dengan
+        kebutuhan nyata masyarakat dan pemangku kepentingan.
+      </p>
+      <div class="outreach-two-col">
+        <article class="outreach-panel">
+          <h3>Pendekatan Community-Engaged Scholarship</h3>
+          <p>
+            Setiap program pengabdian didorong untuk:
+          </p>
+          <ul class="outreach-list">
+            <li>Berangkat dari kebutuhan dan aspirasi komunitas mitra.</li>
+            <li>Mengintegrasikan hasil riset mahasiswa dan dosen ke dalam solusi nyata.</li>
+            <li>Melibatkan mahasiswa S2/S3 sebagai co-designer, bukan hanya relawan teknis.</li>
+            <li>Memunculkan produk dengan nilai tambah: modul, SOP, aplikasi, model bisnis, atau naskah kebijakan.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Dengan pendekatan ini, Tridharma (pendidikan, penelitian, pengabdian) berjalan bersama
+            dan menghasilkan dampak yang terdokumentasi dan terukur.
+          </p>
+        </article>
+        <aside class="outreach-side">
+          <strong>Peran Mahasiswa Magister & Doktor</strong>
+          <p style="margin-top:0.4rem;">
+            Mahasiswa pascasarjana berperan sebagai:
+          </p>
+          <ul class="outreach-list">
+            <li><em>Problem mapper</em> – memetakan masalah dan kebutuhan di lapangan.</li>
+            <li><em>Co-researcher</em> – mengembangkan solusi berbasis sains dan data.</li>
+            <li><em>Knowledge broker</em> – menjembatani ilmu dengan praktik.</li>
+            <li><em>Innopreneur</em> – merancang model usaha atau inovasi berkelanjutan.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROGRAM PENGABDIAN -->
+    <section id="program">
+      <h2><span class="icon">📦</span> Spektrum Program Pengabdian SPS</h2>
+      <p class="section-intro">
+        Program pengabdian dibagi dalam beberapa klaster utama agar mudah diakses oleh komunitas
+        mitra, mahasiswa, dan dosen.
+      </p>
+
+      <div class="outreach-grid-3">
+        <article class="outreach-card">
+          <div class="outreach-tagline">LIVING LAB & FIELD SCHOOL</div>
+          <h3>Desa/Kawasan Binaan & Living Labs</h3>
+          <p>
+            Kawasan tertentu (desa, DAS, pesisir, kota) ditetapkan sebagai laboratorium hidup
+            untuk mengimplementasikan inovasi IPB: teknologi budidaya, sistem informasi iklim,
+            tata kelola sumberdaya, dan lain-lain.
+          </p>
+          <div class="outreach-pill-row">
+            <span class="outreach-pill">Desa pangan</span>
+            <span class="outreach-pill">Pesisir & blue carbon</span>
+            <span class="outreach-pill">DAS & lanskap</span>
+          </div>
+        </article>
+
+        <article class="outreach-card">
+          <div class="outreach-tagline">INNOPRENEUR & SOCIAL INNOVATION</div>
+          <h3>Inovasi & Kewirausahaan Sosial</h3>
+          <p>
+            Mahasiswa dan dosen bersama komunitas mengembangkan produk, layanan, atau model
+            bisnis baru (agripreneurship, eco-tourism, bio-based product) yang dapat menjadi
+            sumber pendapatan berkelanjutan bagi masyarakat.
+          </p>
+          <div class="outreach-pill-row">
+            <span class="outreach-pill">Social enterprise</span>
+            <span class="outreach-pill">UMKM berbasis riset</span>
+            <span class="outreach-pill">Inkubasi inovasi</span>
+          </div>
+        </article>
+
+        <article class="outreach-card">
+          <div class="outreach-tagline">POLICY & CAPACITY</div>
+          <h3>Policy Outreach & Capacity Building</h3>
+          <p>
+            Kegiatan yang berfokus pada penguatan kapasitas pemerintah, organisasi masyarakat, dan
+            lembaga lain melalui pelatihan, lokakarya teknis, penyusunan panduan, dan dukungan
+            penyusunan kebijakan berbasis sains.
+          </p>
+          <div class="outreach-pill-row">
+            <span class="outreach-pill">Pelatihan teknis</span>
+            <span class="outreach-pill">Naskah akademik</span>
+            <span class="outreach-pill">Policy brief</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LIVING LAB & FIELD SCHOOL -->
+    <section id="livinglab">
+      <h2><span class="icon">🏞️</span> Living Lab & Community Field School</h2>
+      <p class="section-intro">
+        Living Lab adalah “kelas tanpa dinding” di mana mahasiswa dan dosen bekerja langsung
+        dengan masyarakat untuk merancang, menguji, dan menyempurnakan inovasi.
+      </p>
+
+      <div class="livinglab-grid">
+        <div class="livinglab-visual">
+          <img src="https://source.unsplash.com/1000x600/?farmers,training,field" alt="Field School & Living Lab" />
+        </div>
+        <article class="outreach-panel">
+          <h3>Contoh Rancang Bangun Living Lab</h3>
+          <p>
+            Setiap Living Lab dapat memuat:
+          </p>
+          <ul class="outreach-list">
+            <li><strong>Fokus tema</strong>: ketahanan pangan, adaptasi iklim, blue carbon, One Health, dll.</li>
+            <li><strong>Mitra lokal</strong>: desa, BUMDes, kelompok tani/nelayan, UMKM, sekolah, puskesmas.</li>
+            <li><strong>Peran SPS</strong>: koordinasi akademik, supervisi ilmiah, dokumentasi hasil.</li>
+            <li><strong>Peran mahasiswa</strong>: pengumpulan data, co-design solusi, monitoring dampak.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Informasi detail tiap Living Lab (lokasi, mitra, kontak, peluang partisipasi mahasiswa)
+            dapat ditampilkan sebagai direktori ringkas pada tahap pengembangan berikutnya.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- POLICY & GOVERNANCE OUTREACH -->
+    <section id="policy">
+      <h2><span class="icon">⚖️</span> Policy & Governance Outreach</h2>
+      <p class="section-intro">
+        Banyak mahasiswa magister dan doktor terlibat dalam penyusunan kebijakan, pedoman teknis,
+        dan naskah akademik di berbagai tingkatan. Halaman ini menonjolkan peran tersebut.
+      </p>
+
+      <div class="outreach-two-col">
+        <article class="outreach-panel">
+          <h3>Kegiatan Utama</h3>
+          <ul class="outreach-list">
+            <li>Penyusunan naskah akademik dan kajian kebijakan untuk pemerintah pusat dan daerah.</li>
+            <li>Pengembangan pedoman teknis dan modul pelatihan bagi OPD, rumah sakit, sekolah, dan lembaga lain.</li>
+            <li>Pendampingan penyusunan rencana aksi tematik (iklim, pangan, kesehatan, lingkungan).</li>
+            <li>Kontribusi mahasiswa pada laporan nasional atau internasional (misal NAP, laporan SDGs, dsb.).</li>
+          </ul>
+        </article>
+        <aside class="outreach-side">
+          <strong>Peran Dosen & Mahasiswa</strong>
+          <p style="margin-top:0.4rem;">
+            Dosen berperan sebagai pakar dan penanggung jawab ilmiah, sementara mahasiswa:
+          </p>
+          <ul class="outreach-list">
+            <li>melakukan analisis data dan literatur,</li>
+            <li>membantu merumuskan opsi kebijakan,</li>
+            <li>menyusun policy brief dan materi presentasi,</li>
+            <li>berpartisipasi dalam konsultasi publik dan FGD teknis.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- MITRA & PETA PROGRAM -->
+    <section id="mitra">
+      <h2><span class="icon">🤝</span> Mitra & Peta Program Pengabdian</h2>
+      <p class="section-intro">
+        Jaringan mitra menjadi kunci agar pengabdian berjalan berkelanjutan. Bagian ini memberi
+        gambaran ringkas klaster mitra dan contoh program yang sedang atau pernah berjalan.
+      </p>
+
+      <div class="partner-grid">
+        <div class="outreach-panel">
+          <h3>Klaster Mitra Utama</h3>
+          <p>
+            Mitra dapat diklasterkan sebagai berikut:
+          </p>
+          <div class="partner-badge-row">
+            <span class="partner-badge">Pemerintah Daerah</span>
+            <span class="partner-badge">Kementerian/Lembaga</span>
+            <span class="partner-badge">Desa & BUMDes</span>
+            <span class="partner-badge">UMKM & Koperasi</span>
+            <span class="partner-badge">Organisasi Masyarakat</span>
+            <span class="partner-badge">Mitra Internasional</span>
+          </div>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Ke depan, tabel ini dapat dihubungkan dengan database mitra SPS dan divisualisasikan
+            sebagai peta interaktif (map) sehingga calon mitra dapat melihat jejak kolaborasi SPS
+            di berbagai wilayah.
+          </p>
+        </div>
+        <div class="outreach-panel">
+          <h3>Contoh Peta Program (Ringkas)</h3>
+          <table class="partner-table">
+            <thead>
+              <tr>
+                <th>Wilayah / Klaster</th>
+                <th>Fokus</th>
+                <th>Unit/Prodi Pengampu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pesisir & Pulau Kecil</td>
+                <td>Blue carbon, perikanan berkelanjutan, adaptasi iklim</td>
+                <td>Prodi X, Pusat Studi Y</td>
+              </tr>
+              <tr>
+                <td>DAS & Hutan</td>
+                <td>Restorasi lanskap, agroforestri, tata air</td>
+                <td>Prodi A, Prodi B</td>
+              </tr>
+              <tr>
+                <td>Perkotaan</td>
+                <td>Urban farming, iklim kota, manajemen risiko</td>
+                <td>Prodi C, Pusat Z</td>
+              </tr>
+              <tr>
+                <td>Pangan & Kesehatan</td>
+                <td>Ketahanan pangan, gizi, One Health</td>
+                <td>Prodi D, Prodi E</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA KOLABORASI -->
+    <section id="cta" class="outreach-cta">
+      <div>
+        <h2>Bergabung dalam Jaringan Pengabdian SPS IPB</h2>
+        <p>
+          Anda komunitas, pemerintah, organisasi, atau mitra industri yang tertarik bekerja sama
+          dengan Sekolah Pascasarjana IPB? Atau Anda mahasiswa yang ingin terlibat dalam program
+          pengabdian berbasis riset dan inovasi?
+        </p>
+      </div>
+      <div class="outreach-cta-actions">
+        <button class="outreach-cta-btn primary" type="button">
+          Form Minat Kolaborasi Mitra
+        </button>
+        <button class="outreach-cta-btn secondary" type="button">
+          Peluang untuk Mahasiswa S2/S3
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

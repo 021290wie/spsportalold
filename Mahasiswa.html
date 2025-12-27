@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mahasiswa – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Tambahan khusus halaman MAHASISWA ===== */
+
+    .hero-student {
+      padding: 2.2rem 1.25rem 2.5rem;
+      background: radial-gradient(circle at top left, #0ea5e9 0, #f9fafb 55%, #e5f3ff 100%);
+      color: #0f172a;
+    }
+    .hero-student-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-student-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-student-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #0f766e;
+    }
+    .hero-student-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #0f172a;
+    }
+    .hero-student-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #4b5563;
+      max-width: 36rem;
+    }
+    .hero-student-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-student-tag {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #bae6fd;
+      background: #e0f2fe;
+      color: #0f172a;
+    }
+    .hero-student-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+    .hero-student-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      padding: 0.45rem 1.1rem;
+    }
+    .hero-btn-primary {
+      background:#0ea5e9;
+      color:#0b1120;
+      font-weight:600;
+    }
+    .hero-btn-secondary {
+      background:transparent;
+      border:1px solid #0ea5e9;
+      color:#0f172a;
+    }
+
+    .hero-student-side {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 20px 40px rgba(148,163,184,0.5);
+      background: #ffffff;
+      display: grid;
+      grid-template-rows: 1.4fr 1.1fr;
+    }
+    .hero-student-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-student-side-bottom {
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      color: #374151;
+      background: #f9fafb;
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+    .hero-student-pill {
+      display:inline-block;
+      padding:0.12rem 0.55rem;
+      border-radius:999px;
+      background:#e0f2fe;
+      color:#0f172a;
+      font-size:0.75rem;
+      margin-bottom:0.25rem;
+    }
+
+    /* SUBNAV MAHASISWA */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #0ea5e9;
+      border-color: #0284c7;
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    /* LAYOUT BAGIAN-BAGIAN */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.8rem 1.25rem 2.5rem;
+    }
+
+    main section {
+      margin-bottom: 2rem;
+    }
+
+    main h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.4rem;
+      color: #0f172a;
+    }
+
+    .section-intro {
+      font-size: 0.9rem;
+      color: #4b5563;
+      max-width: 40rem;
+      margin: 0 0 0.8rem;
+    }
+
+    .icon {
+      margin-right: 0.3rem;
+    }
+
+    .student-two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .student-panel {
+      border-radius: var(--radius-xl, 1rem);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light,0 4px 12px rgba(15,23,42,0.06));
+    }
+    .student-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .student-side {
+      border-radius: var(--radius-xl,1rem);
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      font-size: 0.84rem;
+    }
+
+    .student-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+
+    /* GRID 3 CARD (layanan) */
+    .student-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .student-card {
+      border-radius: var(--radius-lg,0.9rem);
+      padding: 0.9rem 0.95rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(148,163,184,0.22);
+    }
+    .student-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    /* TIMELINE SINGKAT */
+    .timeline {
+      margin-top: 0.5rem;
+      border-left: 2px solid #e5e7eb;
+      padding-left: 0.9rem;
+      font-size: 0.82rem;
+    }
+    .timeline-item {
+      margin-bottom: 0.45rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -0.95rem;
+      top: 0.3rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #0ea5e9;
+    }
+
+    /* KOMUNITAS & KEGIATAN */
+    .community-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .community-visual {
+      border-radius: var(--radius-xl,1rem);
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #000;
+      box-shadow: 0 16px 32px rgba(148,163,184,0.5);
+    }
+    .community-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 260px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-student-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-student-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .student-two-col,
+      .community-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .student-grid-3 {
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .student-grid-3 {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    /* ==== DIREKTORI BIOSKETCH MAHASISWA (GRID) ==== */
+    .phd-bio-section {
+      margin-top: 1.8rem;
+      padding: 1.8rem 1.25rem 2.2rem;
+      background: #f3f4f6;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .phd-bio-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .phd-bio-inner h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.4rem;
+      color: #0f172a;
+    }
+
+    .phd-bio-intro {
+      font-size: 0.9rem;
+      color: #4b5563;
+      max-width: 40rem;
+      margin: 0 0 1.4rem;
+    }
+
+    .phd-bio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1rem;
+      font-size: 0.84rem;
+    }
+
+    .phd-bio-card {
+      background:#ffffff;
+      border-radius:1rem;
+      border:1px solid #e5e7eb;
+      box-shadow:0 10px 24px rgba(148,163,184,0.25);
+      padding:0.9rem 0.95rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.35rem;
+    }
+
+    .phd-bio-name {
+      font-size:0.95rem;
+      font-weight:600;
+      color:#0f172a;
+      margin:0;
+    }
+
+    .phd-bio-program {
+      font-size:0.8rem;
+      color:#4b5563;
+      margin:0;
+    }
+
+    .phd-bio-focus {
+      font-size:0.8rem;
+      color:#374151;
+    }
+
+    .phd-bio-tags {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.3rem;
+      margin-top:0.15rem;
+    }
+
+    .phd-bio-tag {
+      font-size:0.75rem;
+      padding:0.15rem 0.55rem;
+      border-radius:999px;
+      background:#e5f3ff;
+      color:#0f172a;
+    }
+
+    .phd-bio-foot {
+      margin-top:0.3rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:0.78rem;
+      color:#6b7280;
+      gap:0.4rem;
+    }
+
+    .phd-bio-link {
+      color:#0369a1;
+      font-weight:600;
+    }
+    .phd-bio-link::after {
+      content:" ↗";
+      font-size:0.7rem;
+    }
+
+    @media(max-width:1024px){
+      .phd-bio-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+    @media(max-width:700px){
+      .phd-bio-grid {
+        grid-template-columns:minmax(0,1fr);
+      }
+    }
+
+    /* ==== KALKULATOR BIAYA HIDUP ==== */
+    .cost-section {
+      margin-top: 2rem;
+      padding: 1.8rem 1.25rem 2.2rem;
+      background: #f9fafb;
+      border-radius: 1rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .cost-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.6fr) minmax(0,1.2fr);
+      gap: 1.3rem;
+      font-size: 0.86rem;
+    }
+
+    .cost-form label {
+      display:block;
+      font-size:0.82rem;
+      margin-bottom:0.15rem;
+      color:#374151;
+    }
+
+    .cost-form select,
+    .cost-form input {
+      width:100%;
+      padding:0.35rem 0.45rem;
+      font-size:0.85rem;
+      border-radius:0.4rem;
+      border:1px solid #d1d5db;
+      margin-bottom:0.55rem;
+    }
+
+    .cost-form small {
+      display:block;
+      font-size:0.74rem;
+      color:#6b7280;
+      margin-bottom:0.35rem;
+    }
+
+    .cost-btn {
+      border-radius:999px;
+      border:none;
+      background:#0ea5e9;
+      color:#0b1120;
+      font-weight:600;
+      padding:0.45rem 1.1rem;
+      font-size:0.86rem;
+      cursor:pointer;
+      margin-top:0.3rem;
+    }
+
+    .cost-result {
+      border-radius:0.9rem;
+      background:#0f172a;
+      color:#e5e7eb;
+      padding:1rem 1.1rem;
+      font-size:0.86rem;
+    }
+
+    .cost-result h3 {
+      margin:0 0 0.4rem;
+      font-size:0.98rem;
+      color:#e5e7eb;
+    }
+
+    .cost-result-figure {
+      font-size:1.3rem;
+      font-weight:700;
+      color:#fbbf24;
+    }
+
+    .cost-result-note {
+      margin-top:0.4rem;
+      font-size:0.8rem;
+      color:#d1d5db;
+    }
+
+    @media(max-width:900px){
+      .cost-grid{
+        grid-template-columns:minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+ 
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html" class="active">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- HERO MAHASISWA -->
+  <section class="hero-student">
+    <div class="hero-student-inner">
+      <div class="hero-student-main">
+        <div class="hero-student-label">GRADUATE STUDENT LIFE</div>
+        <h1>Mahasiswa Sekolah Pascasarjana IPB</h1>
+        <p>
+          Halaman ini merangkum layanan akademik, dukungan karier, kesejahteraan, dan komunitas yang
+          membentuk pengalaman belajar mahasiswa S2 dan S3 di SPs IPB.
+        </p>
+        <div class="hero-student-tags">
+          <span class="hero-student-tag">Academic support</span>
+          <span class="hero-student-tag">Research mentoring</span>
+          <span class="hero-student-tag">Wellbeing & community</span>
+        </div>
+        <div class="hero-student-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+            Layanan Akademik & Administrasi
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('community').scrollIntoView({behavior:'smooth'})">
+            Komunitas & Aktivitas Mahasiswa
+          </button>
+        </div>
+        <div class="hero-student-note">
+          Informasi detail seperti prosedur akademik, form administrasi, dan kontak layanan dapat
+          diintegrasikan langsung dari sistem informasi IPB.
+        </div>
+      </div>
+      <aside class="hero-student-side">
+        <img src="img/DSC_8120-scaled.jpg" alt="Mahasiswa Pascasarjana" />
+        <div class="hero-student-side-bottom">
+          <div>
+            <span class="hero-student-pill">Mahasiswa S2/S3</span><br />
+            Lingkungan belajar yang mendorong kolaborasi lintas disiplin, diskusi kritis,
+            dan keterlibatan dalam proyek-proyek strategis.
+          </div>
+          <div>
+            <strong style="font-size:0.85rem;">Akses cepat:</strong><br />
+            • Layanan akademik & administrasi<br />
+            • Dukungan karier & publikasi<br />
+            • Beasiswa & kesejahteraan mahasiswa
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#services" class="subnav-link">Layanan Akademik</a>
+    <a href="#career" class="subnav-link">Pengembangan Karier & Publikasi</a>
+    <a href="#biosketch" class="subnav-link">Direktori Biosketch</a>
+    <a href="#wellbeing" class="subnav-link">Kesejahteraan & Dukungan</a>
+    <a href="#community" class="subnav-link">Komunitas & Aktivitas</a>
+    <a href="#living-cost" class="subnav-link">Perkiraan Biaya Hidup</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">👥</span> Gambaran Umum Layanan untuk Mahasiswa</h2>
+      <p class="section-intro">
+        SPs IPB berkomitmen menyediakan ekosistem dukungan yang lengkap bagi mahasiswa pascasarjana:
+        mulai dari masuk, menjalani studi, hingga lulus dan berjejaring sebagai alumni.
+      </p>
+      <p style="font-size:0.9rem;">
+        Mahasiswa S2 dan S3 tidak hanya mengikuti perkuliahan dan riset, tetapi juga difasilitasi
+        untuk membangun kapasitas akademik, profesional, dan personal. Halaman ini dapat menjadi
+        pintu masuk utama untuk semua informasi dan layanan yang relevan dengan perjalanan studi,
+        termasuk akademik, beasiswa, layanan psikologis, dan aktivitas komunitas.
+      </p>
+    </section>
+
+    <!-- LAYANAN AKADEMIK & ADMINISTRASI -->
+    <section id="services">
+      <h2><span class="icon">📑</span> Layanan Akademik & Administrasi</h2>
+      <p class="section-intro">
+        Layanan akademik membantu mahasiswa mengelola proses studi secara tertib dan jelas, mulai
+        dari registrasi hingga kelulusan.
+      </p>
+
+      <div class="student-two-col">
+        <article class="student-panel">
+          <h3>Rangkaian Layanan Akademik</h3>
+          <p>
+            Beberapa contoh layanan yang dapat dijelaskan dan dihubungkan ke sistem informasi IPB:
+          </p>
+          <ul class="student-list">
+            <li>Informasi jadwal registrasi, pembayaran, dan KRS.</li>
+            <li>Prosedur pengajuan topik dan pendaftaran tesis/disertasi.</li>
+            <li>Alur seminar usulan, ujian tengah, dan ujian akhir.</li>
+            <li>Pengajuan cuti akademik dan perpanjangan studi.</li>
+            <li>Proses yudisium dan kelulusan.</li>
+          </ul>
+          <div class="timeline">
+            <div class="timeline-item"><strong>Masuk</strong> – Registrasi & orientasi mahasiswa baru.</div>
+            <div class="timeline-item"><strong>Fase kuliah</strong> – Pengisian KRS & perkuliahan inti.</div>
+            <div class="timeline-item"><strong>Fase riset</strong> – Proposal, penelitian, & seminar.</div>
+            <div class="timeline-item"><strong>Fase akhir</strong> – Ujian, revisi, & yudisium.</div>
+          </div>
+        </article>
+
+        <aside class="student-side">
+          <strong>Portal Mahasiswa & Formulir</strong>
+          <p style="margin-top:0.4rem;">
+            Halaman Mahasiswa dapat menautkan:
+          </p>
+          <ul class="student-list">
+            <li>Portal akademik IPB (KRS, nilai, registrasi).</li>
+            <li>Formulir pengajuan seminar/ujian, rekomendasi, dan surat-surat resmi.</li>
+            <li>Panduan akademik dan FAQ untuk pertanyaan yang sering muncul.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Integrasi ini memudahkan mahasiswa menemukan semua kebutuhan administrasi dalam satu
+            halaman terpusat.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PENGEMBANGAN KARIER & PUBLIKASI -->
+    <section id="career">
+      <h2><span class="icon">🎯</span> Pengembangan Karier & Publikasi Mahasiswa</h2>
+      <p class="section-intro">
+        Mahasiswa pascasarjana diharapkan tidak hanya lulus, tetapi juga menghasilkan karya yang
+        berpengaruh dan siap memasuki jenjang karier berikutnya.
+      </p>
+
+      <div class="student-grid-3">
+        <article class="student-card">
+          <h3>Perencanaan Karier Akademik & Profesional</h3>
+          <p>
+            Layanan yang dapat disediakan:
+          </p>
+          <ul class="student-list" style="margin-top:0.3rem;">
+            <li>Konseling karier untuk jalur akademik, riset, dan profesional.</li>
+            <li>Workshop CV akademik, proposal riset, dan interview.</li>
+            <li>Informasi lowongan dosen, peneliti, dan konsultan.</li>
+          </ul>
+        </article>
+
+        <article class="student-card">
+          <h3>Target Publikasi & Panduan Jurnal</h3>
+          <p>
+            Mahasiswa difasilitasi untuk:
+          </p>
+          <ul class="student-list" style="margin-top:0.3rem;">
+            <li>Memilih jurnal sasaran yang sesuai dengan topik.</li>
+            <li>Menyusun manuskrip dan merespons review.</li>
+            <li>Memahami etika publikasi dan pengelolaan data.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Daftar jurnal yang sering digunakan dan panduan teknis dapat ditautkan dari halaman ini.
+          </p>
+        </article>
+
+        <article class="student-card">
+          <h3>Beasiswa, Fellowship & Mobilitas</h3>
+          <p>
+            Bekerja sama dengan Graduate Scholarship Collaboration Office dan unit internasional:
+          </p>
+          <ul class="student-list" style="margin-top:0.3rem;">
+            <li>Informasi beasiswa lanjutan (postdoc, sandiwara riset, dll.).</li>
+            <li>Program mobilitas, joint supervision, dan summer school.</li>
+            <li>Pendampingan aplikasi fellowship internasional.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            <a href="beasiswa.html">Lihat halaman Beasiswa & Collaboration Office →</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- DIREKTORI BIOSKETCH MAHASISWA (GRID) -->
+    <section id="biosketch" class="phd-bio-section">
+      <div class="phd-bio-inner">
+        <h2><span class="icon">📘</span> Direktori Biosketch Mahasiswa</h2>
+        <p class="phd-bio-intro">
+          Ringkasan biosketch mahasiswa pascasarjana (S2 dan S3) yang menonjol dalam riset dan
+          kolaborasi. Pada pengembangan berikutnya, bagian ini dapat dihubungkan dengan database
+          SPS untuk menampilkan profil dinamis dan dapat difilter.
+        </p>
+
+        <div class="phd-bio-grid">
+          <article class="phd-bio-card">
+            <p class="phd-bio-name">Dr. (Cand.) Nama Mahasiswa 1, M.Sc.</p>
+            <p class="phd-bio-program">Program Doktor Ilmu Lingkungan</p>
+            <p class="phd-bio-focus">
+              Pemodelan risiko iklim pesisir, blue carbon, dan skenario adaptasi berbasis ekosistem
+              untuk mendukung kebijakan nasional.
+            </p>
+            <div class="phd-bio-tags">
+              <span class="phd-bio-tag">Blue Carbon</span>
+              <span class="phd-bio-tag">Climate Risk</span>
+            </div>
+            <div class="phd-bio-foot">
+              <span>Pembimbing: Prof. A</span>
+              <a href="#" class="phd-bio-link">Profil lengkap</a>
+            </div>
+          </article>
+
+          <article class="phd-bio-card">
+            <p class="phd-bio-name">Nama Mahasiswa 2, M.P.</p>
+            <p class="phd-bio-program">Magister Ilmu Ekonomi Pertanian</p>
+            <p class="phd-bio-focus">
+              Analisis kebijakan subsidi, ketahanan pangan, dan transformasi sistem agrifood
+              berkelanjutan di kawasan agro-maritim.
+            </p>
+            <div class="phd-bio-tags">
+              <span class="phd-bio-tag">Food Security</span>
+              <span class="phd-bio-tag">Subsidy Policy</span>
+            </div>
+            <div class="phd-bio-foot">
+              <span>Pembimbing: Prof. B</span>
+              <a href="#" class="phd-bio-link">Profil lengkap</a>
+            </div>
+          </article>
+
+          <article class="phd-bio-card">
+            <p class="phd-bio-name">Nama Mahasiswa 3, M.Si.</p>
+            <p class="phd-bio-program">Program Doktor Sains Veteriner</p>
+            <p class="phd-bio-focus">
+              One Health, zoonosis terkait iklim, dan pengembangan sistem peringatan dini penyakit
+              berbasis data iklim.
+            </p>
+            <div class="phd-bio-tags">
+              <span class="phd-bio-tag">One Health</span>
+              <span class="phd-bio-tag">Climate & Health</span>
+            </div>
+            <div class="phd-bio-foot">
+              <span>Pembimbing: Prof. C</span>
+              <a href="#" class="phd-bio-link">Profil lengkap</a>
+            </div>
+          </article>
+
+          <article class="phd-bio-card">
+            <p class="phd-bio-name">Nama Mahasiswa 4, M.T.</p>
+            <p class="phd-bio-program">Program Doktor Teknik Pertanian</p>
+            <p class="phd-bio-focus">
+              Smart farming, sensor iklim, dan otomatisasi sistem irigasi adaptif untuk meningkatkan
+              efisiensi penggunaan air.
+            </p>
+            <div class="phd-bio-tags">
+              <span class="phd-bio-tag">Smart Farming</span>
+              <span class="phd-bio-tag">IoT</span>
+            </div>
+            <div class="phd-bio-foot">
+              <span>Pembimbing: Prof. D</span>
+              <a href="#" class="phd-bio-link">Profil lengkap</a>
+            </div>
+          </article>
+
+          <article class="phd-bio-card">
+            <p class="phd-bio-name">Nama Mahasiswa 5, M.Si.</p>
+            <p class="phd-bio-program">Magister Sains Komputasi</p>
+            <p class="phd-bio-focus">
+              Pemodelan data spasial, machine learning untuk mitigasi bencana, dan decision support
+              system kebencanaan.
+            </p>
+            <div class="phd-bio-tags">
+              <span class="phd-bio-tag">Data Science</span>
+              <span class="phd-bio-tag">Disaster Risk</span>
+            </div>
+            <div class="phd-bio-foot">
+              <span>Pembimbing: Dr. E</span>
+              <a href="#" class="phd-bio-link">Profil lengkap</a>
+            </div>
+          </article>
+
+          <article class="phd-bio-card">
+            <p class="phd-bio-name">Nama Mahasiswa 6, M.Si.</p>
+            <p class="phd-bio-program">Program Doktor Pengelolaan SDA</p>
+            <p class="phd-bio-focus">
+              Tata kelola lahan, konflik pemanfaatan ruang, dan pengembangan instrumen nilai ekonomi
+              karbon di tingkat tapak.
+            </p>
+            <div class="phd-bio-tags">
+              <span class="phd-bio-tag">Land Use</span>
+              <span class="phd-bio-tag">Carbon Economy</span>
+            </div>
+            <div class="phd-bio-foot">
+              <span>Pembimbing: Dr. F</span>
+              <a href="#" class="phd-bio-link">Profil lengkap</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- KESEJAHTERAAN & DUKUNGAN -->
+    <section id="wellbeing">
+      <h2><span class="icon">💚</span> Kesejahteraan, Inklusi & Dukungan Mahasiswa</h2>
+      <p class="section-intro">
+        Studi pascasarjana sering menuntut energi intelektual dan emosional yang besar; karena itu
+        dukungan kesejahteraan mahasiswa menjadi penting.
+      </p>
+
+      <div class="student-two-col">
+        <article class="student-panel">
+          <h3>Dukungan Kesejahteraan & Konseling</h3>
+          <p>
+            Halaman ini dapat menginformasikan:
+          </p>
+          <ul class="student-list">
+            <li>Layanan konseling psikologis dan wellbeing yang tersedia di IPB.</li>
+            <li>Kebijakan inklusi, kesetaraan, dan pencegahan kekerasan.</li>
+            <li>Saluran pelaporan dan pendampingan bila terjadi masalah.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Link langsung ke unit terkait (misalnya UPT konseling, unit etika, dan lain-lain) akan
+            sangat membantu mahasiswa mengakses dukungan dengan cepat.
+          </p>
+        </article>
+
+        <aside class="student-side">
+          <strong>Penyeimbangan Studi, Kerja & Keluarga</strong>
+          <p style="margin-top:0.4rem;">
+            Banyak mahasiswa pascasarjana juga bekerja atau memiliki tanggung jawab keluarga. Halaman
+            Mahasiswa dapat menyajikan:
+          </p>
+          <ul class="student-list">
+            <li>Tips manajemen waktu dan beban studi.</li>
+            <li>Kisah singkat praktik baik (tanpa perlu testimoni personal di hero).</li>
+            <li>Informasi kebijakan fleksibilitas tertentu (misal jadwal bimbingan, pengaturan studi).</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- KOMUNITAS & AKTIVITAS -->
+    <section id="community">
+      <h2><span class="icon">🌐</span> Komunitas, Jaringan & Aktivitas Mahasiswa</h2>
+      <p class="section-intro">
+        Dinamika kehidupan pascasarjana juga dibentuk oleh komunitas ilmiah, organisasi mahasiswa,
+        dan aktivitas bersama lintas program studi.
+      </p>
+
+      <div class="community-grid">
+        <div class="community-visual">
+          <img src="https://source.unsplash.com/1000x600/?campus,discussion" alt="Komunitas Mahasiswa Pascasarjana" />
+        </div>
+        <article class="student-panel">
+          <h3>Ruang untuk Berkoneksi & Berkolaborasi</h3>
+          <p>
+            Komunitas mahasiswa pascasarjana dapat difasilitasi melalui:
+          </p>
+          <ul class="student-list">
+            <li>Organisasi atau himpunan mahasiswa pascasarjana tingkat SPs/IPB.</li>
+            <li>Forum diskusi ilmiah lintas program (reading group, seminar seri).</li>
+            <li>Kegiatan pengabdian masyarakat berbasis riset.</li>
+            <li>Kegiatan sosial dan rekreatif untuk menjaga keseimbangan hidup.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Kalender singkat kegiatan atau highlight beberapa aktivitas per semester dapat ditampilkan
+            di sini, dengan link detail ke platform lain bila diperlukan.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- KALKULATOR PERKIRAAN BIAYA HIDUP -->
+    <section id="living-cost" class="cost-section">
+      <h2><span class="icon">💰</span> Perkiraan Biaya Hidup di Bogor</h2>
+      <p class="section-intro">
+        Kalkulator sederhana untuk membantu calon mahasiswa (self-funded maupun penerima beasiswa)
+        memperkirakan kebutuhan biaya hidup bulanan selama studi di Bogor. Angka-angka di bawah
+        bersifat indikatif dan dapat disesuaikan.
+      </p>
+
+      <div class="cost-grid">
+        <div class="cost-form">
+          <label for="tipe-mahasiswa">Tipe Mahasiswa</label>
+          <select id="tipe-mahasiswa">
+            <option value="self">Self-funded</option>
+            <option value="sponsored">Sponsored / Beasiswa</option>
+          </select>
+
+          <label for="hunian">Tipe Hunian</label>
+          <select id="hunian">
+            <option value="1200000">Kost sederhana (± Rp1.200.000/bulan)</option>
+            <option value="1800000">Kost menengah (± Rp1.800.000/bulan)</option>
+            <option value="2500000">Kost eksklusif / keluarga (± Rp2.500.000/bulan)</option>
+          </select>
+
+          <label for="makan">Makan per Bulan (Rp)</label>
+          <input type="number" id="makan" value="1500000" />
+          <small>Contoh: Rp1.500.000–2.000.000 per bulan tergantung pola makan.</small>
+
+          <label for="transport">Transport & Mobilitas (Rp)</label>
+          <input type="number" id="transport" value="500000" />
+          <small>Contoh: Rp300.000–700.000 per bulan (ojek online, angkot, dll.).</small>
+
+          <label for="lain">Kebutuhan Lain (internet, buku, dll.) (Rp)</label>
+          <input type="number" id="lain" value="500000" />
+          <small>Internet, paket data, fotokopi, buku, aktivitas sosial, dan lain-lain.</small>
+
+          <label for="bulan">Lama Studi yang Dihitung (bulan)</label>
+          <input type="number" id="bulan" value="24" />
+          <small>Contoh: 24 bulan (2 tahun) untuk Magister, 48 bulan (4 tahun) untuk Doktor.</small>
+
+          <button class="cost-btn" type="button" onclick="hitungBiayaHidup()">Hitung Perkiraan Biaya</button>
+        </div>
+
+        <div class="cost-result" id="cost-result">
+          <h3>Perkiraan Biaya Hidup</h3>
+          <p>
+            Silakan isi pilihan hunian dan estimasi kebutuhan bulanan, lalu klik tombol
+            <strong>“Hitung Perkiraan Biaya”</strong>.
+          </p>
+          <p class="cost-result-figure" id="cost-total-bulan">Rp0 / bulan</p>
+          <p id="cost-total-lama">Total untuk 0 bulan studi: Rp0</p>
+          <p class="cost-result-note" id="cost-note">
+            Catatan: Perkiraan ini tidak termasuk biaya pendidikan (tuition fee) dan dapat berbeda
+            tergantung gaya hidup, kurs, dan inflasi.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function formatRupiah(angka) {
+      if (isNaN(angka)) return "Rp0";
+      return "Rp" + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    function hitungBiayaHidup() {
+      var tipe = document.getElementById('tipe-mahasiswa').value;
+      var hunian = parseInt(document.getElementById('hunian').value || 0, 10);
+      var makan = parseInt(document.getElementById('makan').value || 0, 10);
+      var transport = parseInt(document.getElementById('transport').value || 0, 10);
+      var lain = parseInt(document.getElementById('lain').value || 0, 10);
+      var bulan = parseInt(document.getElementById('bulan').value || 0, 10);
+
+      var totalPerBulan = hunian + makan + transport + lain;
+      var totalDurasi = totalPerBulan * (bulan > 0 ? bulan : 0);
+
+      document.getElementById('cost-total-bulan').textContent = formatRupiah(totalPerBulan) + " / bulan";
+      document.getElementById('cost-total-lama').textContent =
+        "Total untuk " + (bulan > 0 ? bulan : 0) + " bulan studi: " + formatRupiah(totalDurasi);
+
+      var note = "Catatan: Perkiraan ini tidak termasuk biaya pendidikan (tuition fee) dan dapat berbeda ";
+      note += "tergantung gaya hidup, kurs, dan inflasi.";
+
+      if (tipe === "sponsored") {
+        note += " Untuk penerima beasiswa, cek kembali komponen apa saja yang sudah tercakup (living allowance, ";
+        note += "asuransi, tiket perjalanan, dll.) agar tidak terjadi kekeliruan perencanaan.";
+      } else {
+        note += " Mahasiswa self-funded disarankan menyiapkan cadangan dana untuk kondisi darurat atau perubahan biaya hidup.";
+      }
+
+      document.getElementById('cost-note').textContent = note;
+    }
+  </script>
+
+</body>
+</html>

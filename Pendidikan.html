@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pendidikan – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Tambahan khusus halaman Pendidikan (di atas style global) */
+
+    .hero-edu {
+      padding: 2.1rem 1.25rem 2.4rem;
+      background: radial-gradient(circle at top left, #38bdf8 0, #0b1120 55%, #020617 100%);
+      color: #e5e7eb;
+    }
+    .hero-edu-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-edu-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-edu-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #f9fafb;
+    }
+    .hero-edu-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #e5e7eb;
+      max-width: 34rem;
+    }
+    .hero-edu-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-edu-badge {
+      padding: 0.16rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(191,219,254,0.8);
+      background: rgba(15,23,42,0.5);
+      color: #dbeafe;
+    }
+    .hero-edu-actions {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+
+    .hero-edu-side {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.8);
+      box-shadow: var(--shadow-soft);
+      background: #020617;
+      display: grid;
+      grid-template-rows: 1.5fr 1.1fr;
+    }
+    .hero-edu-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.04);
+    }
+    .hero-edu-side-bottom {
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    /* SUBNAV PENDIDIKAN */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #0ea5e9;
+      border-color: #0284c7;
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    /* GRID PROGRAM & CLUSTER */
+    .program-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .program-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .program-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .program-tagline {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin: 0.1rem 0 0.5rem;
+    }
+    .program-search-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .program-search-row input[type="text"] {
+      flex: 1;
+      min-width: 190px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      padding: 0.38rem 0.75rem;
+      font-size: 0.84rem;
+    }
+    .program-filter-select {
+      min-width: 150px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.84rem;
+      background: #ffffff;
+    }
+
+    .program-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+    .program-list li {
+      margin-bottom: 0.2rem;
+    }
+    .program-note {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .cluster-panel {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.06);
+      font-size: 0.84rem;
+    }
+    .cluster-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+    .cluster-badge {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #cbd5f5;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-size: 0.78rem;
+    }
+
+    /* STRUKTUR & Bimbingan */
+    .structure-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .structure-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .structure-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+    }
+    .structure-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+    .quality-panel {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #eff6ff;
+      border: 1px dashed #93c5fd;
+      font-size: 0.84rem;
+    }
+
+    /* STUDI & SUPPORT */
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .support-card {
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 0.9rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(15,23,42,0.06);
+    }
+    .support-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-edu-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-edu-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .program-grid,
+      .structure-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .support-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .support-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html" class="active">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO PENDIDIKAN -->
+  <section class="hero-edu">
+    <div class="hero-edu-inner">
+      <div class="hero-edu-main">
+        <div class="hero-kicker">ACADEMIC PROGRAMMES</div>
+        <h1>Pendidikan S2 & S3 Berbasis Riset</h1>
+        <p>
+          Sekolah Pascasarjana IPB menawarkan program magister dan doktor interdisipliner yang
+          menghubungkan sains, kebijakan, dan praktik lapangan, dengan dukungan dosen promotor dan
+          jejaring mitra nasional maupun internasional.
+        </p>
+        <div class="hero-edu-badges">
+          <span class="hero-edu-badge">Research-based learning</span>
+          <span class="hero-edu-badge">Interdisciplinary</span>
+          <span class="hero-edu-badge">Policy & practice oriented</span>
+        </div>
+        <div class="hero-edu-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('program').scrollIntoView({behavior:'smooth'})">
+            Lihat Program Studi
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('structure').scrollIntoView({behavior:'smooth'})">
+            Struktur Studi & Bimbingan
+          </button>
+        </div>
+      </div>
+      <aside class="hero-edu-side">
+        <img src="img/RFQ_4898.JPG" alt="Ilustrasi Pendidikan Pascasarjana" />
+        <div class="hero-edu-side-bottom">
+          <div>
+            <strong>Fokus Pendidikan SPs IPB</strong><br />
+            Penguatan kapasitas ilmiah dan profesional melalui kombinasi kuliah, riset mandiri,
+            seminar, dan keterlibatan dalam proyek nyata.
+          </div>
+          <div>
+            <strong>Sekilas:</strong><br />
+            • Program S2 dan S3 lintas bidang<br />
+            • Jalur riset dan kebijakan<br />
+            • Opsi double/dual degree & joint supervision
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#program" class="subnav-link">Program Studi</a>
+    <a href="#structure" class="subnav-link">Struktur & Bimbingan</a>
+    <a href="#support" class="subnav-link">Perencanaan Studi & Dukungan</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">🎓</span> Gambaran Umum Pendidikan Pascasarjana</h2>
+      <p class="section-intro">
+        Pendidikan di SPs IPB dirancang untuk menghasilkan lulusan yang mampu memimpin di dunia
+        akademik, kebijakan, dan praktik profesional dengan basis ilmiah yang kuat.
+      </p>
+      <p style="font-size:0.9rem;">
+        Kurikulum disusun dengan menekankan pendekatan interdisipliner, integrasi riset dan
+        pembelajaran, serta keterlibatan aktif dalam kerja sama dengan lembaga pemerintah, mitra
+        internasional, dan sektor swasta. Mahasiswa didorong untuk mengembangkan disertasi atau tesis
+        yang relevan dengan tantangan nyata, termasuk isu lingkungan, pangan, iklim, dan pembangunan
+        berkelanjutan.
+      </p>
+    </section>
+
+    <!-- PROGRAM STUDI (digabung dengan fitur pencarian & cluster) -->
+    <section id="program">
+      <h2><span class="icon">📚</span> Program Studi Magister & Doktor</h2>
+      <p class="section-intro">
+        Daftar program studi S2 dan S3 yang dikelola atau dikoordinasikan oleh Sekolah Pascasarjana IPB,
+        dikelompokkan ke dalam beberapa fokus keilmuan.
+      </p>
+
+      <div class="program-grid">
+        <article class="program-panel">
+          <h3>Daftar Program Studi</h3>
+          <p class="program-tagline">
+            Ilustratif – nantinya dapat dihubungkan dengan database resmi program studi IPB.
+          </p>
+
+          <div class="program-search-row">
+            <input type="text" placeholder="Cari program studi (misal: 'lingkungan', 'iklim', 'kebijakan')" />
+            <select class="program-filter-select">
+              <option>Filter jenjang</option>
+              <option>Magister (S2)</option>
+              <option>Doktor (S3)</option>
+            </select>
+          </div>
+
+          <ul class="program-list">
+            <li>Magister (S2) – contoh Program Studi A (Lingkungan & Kebijakan).</li>
+            <li>Magister (S2) – contoh Program Studi B (Sumberdaya Alam & Pembangunan).</li>
+            <li>Doktor (S3) – contoh Program Studi C (Ilmu Lingkungan Tropika).</li>
+            <li>Doktor (S3) – contoh Program Studi D (Kebijakan Publik dan Pembangunan).</li>
+          </ul>
+
+          <p class="program-note">
+            Keterangan: daftar ini hanya ilustrasi. Dalam implementasi penuh, halaman ini dapat
+            terhubung ke daftar resmi program IPB dengan detail: profil program, learning outcomes,
+            persyaratan masuk, serta proyeksi karier lulusan.
+          </p>
+        </article>
+
+        <aside class="cluster-panel">
+          <strong>Cluster & Fokus Keilmuan</strong>
+          <p style="margin-top:0.4rem;">
+            Untuk memudahkan calon mahasiswa dan mitra, program studi dapat dikelompokkan dalam
+            beberapa cluster tematik:
+          </p>
+          <div class="cluster-badges">
+            <span class="cluster-badge">Lingkungan & Keberlanjutan</span>
+            <span class="cluster-badge">Pangan & Pertanian</span>
+            <span class="cluster-badge">Iklim & Bencana</span>
+            <span class="cluster-badge">Ekonomi & Kebijakan Publik</span>
+            <span class="cluster-badge">Keanekaragaman Hayati</span>
+            <span class="cluster-badge">Sosial, Budaya & Pembangunan</span>
+          </div>
+          <p style="margin-top:0.6rem;">
+            Masing-masing cluster dapat dikembangkan menjadi halaman khusus yang menampilkan peta
+            kurikulum, dosen pengampu, dan contoh riset tesis/disertasi.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- STRUKTUR & BIMBINGAN -->
+    <section id="structure">
+      <h2><span class="icon">📑</span> Struktur Studi & Sistem Bimbingan</h2>
+      <p class="section-intro">
+        Struktur studi mengatur alur dari perkuliahan, penyusunan proposal, penelitian, hingga ujian
+        tesis/disertasi dengan dukungan pembimbing utama dan ko-pembimbing.
+      </p>
+
+      <div class="structure-grid">
+        <article class="structure-panel">
+          <h3>Struktur Studi S2 & S3</h3>
+          <p>
+            Secara umum, struktur studi mencakup beberapa komponen utama berikut (ilustratif):
+          </p>
+          <ul class="structure-list">
+            <li>Perkuliahan inti dan pilihan pada 1–2 semester awal.</li>
+            <li>Penyusunan proposal riset dan seminar usulan penelitian.</li>
+            <li>Pelaksanaan penelitian lapangan / laboratorium / kebijakan.</li>
+            <li>Penulisan tesis / disertasi dan diseminasi hasil (publikasi / policy brief).</li>
+            <li>Ujian akhir tesis / disertasi dan yudisium.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Detil beban SKS, mata kuliah wajib/pilihan, dan alur administrasi dapat diakses dari
+            dokumen pedoman akademik dan panduan program studi.
+          </p>
+        </article>
+
+        <aside class="quality-panel">
+          <strong>Sistem Bimbingan & Mutu Akademik</strong>
+          <p style="margin-top:0.4rem;">
+            Bimbingan dilakukan oleh tim pembimbing (promotor dan ko-promotor) yang aktif dalam riset
+            dan proyek kerja sama, sehingga mahasiswa dapat:
+          </p>
+          <ul class="structure-list">
+            <li>Menghubungkan topik riset dengan agenda nasional dan global.</li>
+            <li>Mengakses jaringan mitra dalam pengumpulan data dan publikasi.</li>
+            <li>Mendapatkan umpan balik rutin melalui seminar, kolokium, dan konsultasi.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Informasi lebih rinci mengenai promotor dan bidang keahlian dapat dilihat di halaman
+            <a href="dosen.html">Dosen & Promotor</a>.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PERENCANAAN STUDI & DUKUNGAN -->
+    <section id="support">
+      <h2><span class="icon">🧭</span> Perencanaan Studi, Publikasi & Dukungan Mahasiswa</h2>
+      <p class="section-intro">
+        SPs IPB menyediakan berbagai mekanisme untuk membantu mahasiswa merencanakan studi, memilih
+        target publikasi, dan mengakses dukungan akademik maupun beasiswa.
+      </p>
+
+      <div class="support-grid">
+        <article class="support-card">
+          <h3>Rencana Studi & Target Output</h3>
+          <p>
+            Sejak awal, mahasiswa didorong menyusun rencana studi yang jelas, termasuk:
+          </p>
+          <ul class="structure-list" style="margin-top:0.3rem;">
+            <li>Timeline perkuliahan, riset, dan penulisan.</li>
+            <li>Target publikasi (jurnal nasional/internasional, prosiding, policy brief).</li>
+            <li>Integrasi riset dengan proyek dosen atau mitra.</li>
+          </ul>
+        </article>
+
+        <article class="support-card">
+          <h3>Daftar Jurnal & Outlet Publikasi</h3>
+          <p>
+            Portal Pendidikan dapat menampilkan daftar jurnal yang sering digunakan oleh mahasiswa
+            dan dosen SPs IPB, baik di dalam maupun luar negeri, sebagai referensi perencanaan
+            publikasi.
+          </p>
+          <p style="margin-top:0.4rem;font-size:0.84rem;">
+            Koneksi dengan sistem repository IPB dan database publikasi akan memperkuat visibilitas
+            karya mahasiswa.
+          </p>
+        </article>
+
+        <article class="support-card">
+          <h3>Konseling Akademik & Beasiswa</h3>
+          <p>
+            Mahasiswa dapat memanfaatkan sesi konsultasi akademik dan layanan Graduate Scholarship
+            Collaboration Office untuk:
+          </p>
+          <ul class="structure-list" style="margin-top:0.3rem;">
+            <li>Memilih skema beasiswa yang sesuai.</li>
+            <li>Menata kombinasi studi, riset, dan kewajiban kerja.</li>
+            <li>Mempersiapkan dokumen aplikasi beasiswa dan fellowship.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            <a href="beasiswa.html">Masuk ke halaman Beasiswa & Fellowship →</a>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

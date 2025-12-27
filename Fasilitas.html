@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fasilitas – Sekolah Pascasarjana IPB University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Tambahan khusus halaman FASILITAS ===== */
+
+    .hero-facility {
+      padding: 2.2rem 1.25rem 2.6rem;
+      background: linear-gradient(135deg, #0f172a 0%, #020617 45%, #052e16 100%);
+      color: #e5e7eb;
+    }
+    .hero-facility-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-facility-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-facility-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #bbf7d0;
+    }
+    .hero-facility-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #f9fafb;
+    }
+    .hero-facility-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #e5e7eb;
+      max-width: 36rem;
+    }
+    .hero-facility-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-facility-tag {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(187,247,208,0.9);
+      background: rgba(15,23,42,0.7);
+      color: #bbf7d0;
+    }
+    .hero-facility-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+    .hero-facility-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #d1fae5;
+      max-width: 34rem;
+    }
+
+    .hero-facility-side {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.9);
+      box-shadow: 0 24px 46px rgba(15,23,42,0.8);
+      background: #020617;
+      display: grid;
+      grid-template-rows: 1.5fr 1.1fr;
+    }
+    .hero-facility-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 260px;
+      opacity: 0.96;
+    }
+    .hero-facility-side-bottom {
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: radial-gradient(circle at left, rgba(34,197,94,0.2), transparent 55%), rgba(15,23,42,0.96);
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    /* SUBNAV FASILITAS */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #16a34a;
+      border-color: #15803d;
+      color: #ecfdf5;
+      font-weight: 600;
+    }
+
+    /* LAYOUT- LAYOUT BAGIAN */
+    .facility-two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .facility-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .facility-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .facility-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      font-size: 0.84rem;
+    }
+    .facility-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+
+    /* GRID FASILITAS FISIK (3 kolom) */
+    .facility-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .facility-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(148,163,184,0.22);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .facility-card h3 {
+      margin: 0;
+      font-size: 0.96rem;
+    }
+    .facility-meta {
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    /* GRID FASILITAS DIGITAL & LAYANAN */
+    .facility-grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+
+    /* BLOK JADWAL & BOOKING */
+    .booking-panel {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      box-shadow: 0 14px 30px rgba(22,163,74,0.18);
+      font-size: 0.84rem;
+    }
+    .booking-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+      color: #166534;
+    }
+    .booking-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0.4rem 0;
+    }
+    .booking-pill {
+      padding: 0.14rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #bbf7d0;
+      background: #ecfdf5;
+      font-size: 0.78rem;
+      color: #166534;
+    }
+    .booking-table {
+      margin-top: 0.5rem;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .booking-table th,
+    .booking-table td {
+      border: 1px solid #d1fae5;
+      padding: 0.35rem 0.45rem;
+      text-align: left;
+    }
+    .booking-table th {
+      background: #dcfce7;
+      font-weight: 600;
+      color: #166534;
+    }
+
+    /* PUSAT STUDI & JEJARING AKADEMIS */
+    .center-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .center-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+    .center-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+    .center-card {
+      border-radius: var(--radius-lg);
+      padding: 0.7rem 0.75rem;
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+    }
+    .center-card-title {
+      font-weight: 600;
+      font-size: 0.86rem;
+      color: #111827;
+    }
+    .center-card-desc {
+      margin-top: 0.25rem;
+      color: #4b5563;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-facility-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-facility-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .facility-two-col,
+      .facility-grid-2,
+      .center-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .facility-grid-3 {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+      .center-links-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .facility-grid-3 {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html" class="active">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO FASILITAS -->
+  <section class="hero-facility">
+    <div class="hero-facility-inner">
+      <div class="hero-facility-main">
+        <div class="hero-facility-label">LEARNING, RESEARCH & COLLABORATION SPACES</div>
+        <h1>Fasilitas & Ruang Belajar Sekolah Pascasarjana IPB</h1>
+        <p>
+          Halaman ini menampilkan sarana fisik dan digital yang mendukung proses belajar, riset, dan
+          kolaborasi mahasiswa S2/S3, termasuk akses ke pusat studi dan mekanisme pemesanan ruang.
+        </p>
+        <div class="hero-facility-tags">
+          <span class="hero-facility-tag">Lecture & seminar rooms</span>
+          <span class="hero-facility-tag">Research & discussion spaces</span>
+          <span class="hero-facility-tag">Digital learning resources</span>
+        </div>
+        <div class="hero-facility-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('spaces').scrollIntoView({behavior:'smooth'})">
+            Ruang Kuliah & Seminar
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+            Jadwal & Pemesanan Fasilitas
+          </button>
+        </div>
+        <div class="hero-facility-note">
+          Dalam implementasi penuh, halaman ini dapat dihubungkan dengan sistem peminjaman ruang
+          IPB, katalog fasilitas, dan tautan resmi ke pusat studi (sebagai resource akademik).
+        </div>
+      </div>
+      <aside class="hero-facility-side">
+        <img src="img/100_4240-ok-edited-2048x1152-1.jpeg" alt="Ruang Fasilitas Pascasarjana" />
+        <div class="hero-facility-side-bottom">
+          <div>
+            Ruang kuliah pascasarjana, ruang diskusi, dan fasilitas presentasi disusun untuk
+            mendukung pembelajaran berbasis riset dan diskusi intensif.
+          </div>
+          <div style="font-size:0.78rem;">
+            <strong>Spektrum fasilitas:</strong><br />
+            • Ruang kelas & seminar<br />
+            • Ruang sidang & ujian<br />
+            • Ruang diskusi & co-working<br />
+            • Akses pustaka & digital hub
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#spaces" class="subnav-link">Ruang Kuliah & Seminar</a>
+    <a href="#digital" class="subnav-link">Fasilitas Digital & Belajar</a>
+    <a href="#booking" class="subnav-link">Jadwal & Pemesanan</a>
+    <a href="#centers" class="subnav-link">Pusat Studi & Jejaring</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">🏫</span> Gambaran Umum Fasilitas SPs IPB</h2>
+      <p class="section-intro">
+        Fasilitas fisik dan digital SPs IPB dirancang untuk mendukung ekosistem riset dan pembelajaran
+        lintas disiplin, dengan akses yang jelas dan terkoordinasi.
+      </p>
+      <p style="font-size:0.9rem;">
+        Sebagai graduate school, SPs IPB mengoptimalkan fasilitas yang dikelola sendiri maupun yang
+        dimiliki fakultas dan unit lain di IPB. Halaman ini dapat berperan sebagai “peta fasilitas”
+        yang menjelaskan jenis ruang, peralatan utama, pola pemanfaatan, dan mekanisme pemesanan,
+        termasuk keterkaitan dengan pusat studi sebagai jejaring akademik pendukung.
+      </p>
+    </section>
+
+    <!-- RUANG KULIAH & SEMINAR -->
+    <section id="spaces">
+      <h2><span class="icon">🏢</span> Ruang Kuliah, Seminar & Sidang</h2>
+      <p class="section-intro">
+        Ruang-ruang utama yang digunakan untuk perkuliahan, seminar, ujian, dan forum ilmiah
+        tingkat pascasarjana.
+      </p>
+
+      <div class="facility-grid-3">
+        <article class="facility-card">
+          <h3>Ruang Kuliah Pascasarjana</h3>
+          <div class="facility-meta">Kapasitas: ±30–40 orang</div>
+          <p>
+            Digunakan untuk perkuliahan reguler S2/S3, kuliah tamu, dan diskusi kelas kecil dengan
+            dukungan perangkat presentasi dan konektivitas internet.
+          </p>
+          <ul class="facility-list">
+            <li>LCD projector & audio system.</li>
+            <li>Layout fleksibel (diskusi kelompok / kuliah umum).</li>
+            <li>Akses Wi-Fi kampus.</li>
+          </ul>
+        </article>
+
+        <article class="facility-card">
+          <h3>Ruang Seminar & Workshop</h3>
+          <div class="facility-meta">Kapasitas: ±60–120 orang</div>
+          <p>
+            Diperuntukkan bagi seminar proposal, diseminasi hasil riset, pelatihan, dan kegiatan
+            workshop tematik dengan partisipan lebih besar.
+          </p>
+          <ul class="facility-list">
+            <li>Konfigurasi teater atau kelas.</li>
+            <li>Perangkat konferensi dan perekaman.</li>
+            <li>Dapat digunakan untuk kegiatan hybrid.</li>
+          </ul>
+        </article>
+
+        <article class="facility-card">
+          <h3>Ruang Sidang & Ujian Tesis/Disertasi</h3>
+          <div class="facility-meta">Kapasitas: ±10–20 orang</div>
+          <p>
+            Digunakan untuk ujian komprehensif, ujian tesis/disertasi, dan rapat akademik yang
+            membutuhkan suasana formal dan tertib.
+          </p>
+          <ul class="facility-list">
+            <li>Perangkat presentasi & dokumentasi.</li>
+            <li>Pengaturan tempat untuk penguji dan promotor.</li>
+            <li>Opsional: fasilitas hybrid untuk penguji jarak jauh.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- FASILITAS DIGITAL & BELAJAR -->
+    <section id="digital">
+      <h2><span class="icon">💻</span> Fasilitas Digital & Ruang Belajar</h2>
+      <p class="section-intro">
+        Selain ruang fisik, SPs IPB memanfaatkan ekosistem digital untuk mendukung pembelajaran,
+        riset, dan kolaborasi.
+      </p>
+
+      <div class="facility-grid-2">
+        <article class="facility-panel">
+          <h3>Ruang Diskusi, Co-working & Learning Hub</h3>
+          <p>
+            Ruang yang diperuntukkan bagi mahasiswa untuk berdiskusi, mengerjakan proyek, dan
+            melakukan pertemuan kecil:
+          </p>
+          <ul class="facility-list">
+            <li>Ruang diskusi kelompok dengan meja fleksibel.</li>
+            <li>Area co-working untuk penulisan tesis/disertasi.</li>
+            <li>Sudut baca dengan akses ke jurnal dan buku referensi.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Informasi ketersediaan dan tata tertib penggunaan dapat ditautkan ke sistem pemesanan
+            ruang atau portal internal IPB.
+          </p>
+        </article>
+
+        <aside class="facility-side">
+          <strong>Akses Digital & Perpustakaan</strong>
+          <p style="margin-top:0.4rem;">
+            Halaman Fasilitas dapat merangkum dan menautkan:
+          </p>
+          <ul class="facility-list">
+            <li>Portal perpustakaan IPB dan akses e-journal.</li>
+            <li>Repositori tesis/disertasi dan publikasi SPs IPB.</li>
+            <li>Platform pembelajaran daring (LMS) yang digunakan.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Dengan demikian, mahasiswa mendapatkan satu pintu informasi untuk mengakses fasilitas
+            belajar baik fisik maupun digital.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- JADWAL & PEMESANAN -->
+    <section id="booking">
+      <h2><span class="icon">🗓️</span> Jadwal Pemanfaatan & Pemesanan Fasilitas</h2>
+      <p class="section-intro">
+        Untuk memastikan pemanfaatan fasilitas yang adil dan tertib, mekanisme pemesanan dan jadwal
+        dapat dijelaskan secara ringkas di halaman ini.
+      </p>
+
+      <div class="facility-two-col">
+        <article class="facility-panel">
+          <h3>Prinsip Penggunaan & Prioritas</h3>
+          <p>
+            Beberapa prinsip yang dapat dikomunikasikan:
+          </p>
+          <ul class="facility-list">
+            <li>Prioritas penggunaan untuk kegiatan akademik inti (perkuliahan, ujian, seminar).</li>
+            <li>Slot waktu khusus untuk sidang tesis/disertasi.</li>
+            <li>Mekanisme peminjaman untuk kegiatan tambahan (workshop, pelatihan, diskusi).</li>
+            <li>Kewajiban pemeliharaan dan re-layout setelah penggunaan.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Integrasi dengan sistem booking online akan memudahkan dosen, mahasiswa, dan staf
+            memeriksa ketersediaan fasilitas secara real-time.
+          </p>
+        </article>
+
+        <aside class="booking-panel">
+          <h3>Contoh Jadwal & Slot Pemesanan (Ilustratif)</h3>
+          <p>
+            Tabel ini hanya ilustrasi; pada implementasi penuh dapat digantikan dengan kalender
+            interaktif yang ditarik dari sistem IPB.
+          </p>
+          <div class="booking-pill-row">
+            <span class="booking-pill">Senin–Jumat</span>
+            <span class="booking-pill">08.00–17.00</span>
+            <span class="booking-pill">Slot 2 jam</span>
+          </div>
+          <table class="booking-table">
+            <thead>
+              <tr>
+                <th>Ruang</th>
+                <th>Jenis Kegiatan</th>
+                <th>Slot Waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ruang Kuliah SPs 1</td>
+                <td>Kuliah Program Studi</td>
+                <td>08.00–10.00 · 10.00–12.00 · 13.00–15.00</td>
+              </tr>
+              <tr>
+                <td>Ruang Seminar SPs</td>
+                <td>Seminar Proposal / Diseminasi</td>
+                <td>08.00–11.00 · 13.00–16.00</td>
+              </tr>
+              <tr>
+                <td>Ruang Sidang</td>
+                <td>Ujian Tesis / Disertasi</td>
+                <td>09.00–12.00 · 13.00–16.00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:0.6rem;font-size:0.8rem;">
+            Tautan “Ajukan pemesanan ruang” dapat diarahkan ke formulir resmi atau sistem informasi
+            yang digunakan IPB.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PUSAT STUDI & JEJARING AKADEMIS -->
+    <section id="centers">
+      <h2><span class="icon">🔗</span> Pusat Studi & Jejaring Akademis (External Links)</h2>
+      <p class="section-intro">
+        Meskipun pusat studi secara kelembagaan berada di luar SPs, banyak di antaranya menjadi
+        mitra akademik penting untuk riset dan bimbingan mahasiswa pascasarjana.
+      </p>
+
+      <div class="center-grid">
+        <article class="facility-panel">
+          <h3>Peran Pusat Studi bagi Mahasiswa SPs</h3>
+          <p>
+            Halaman Fasilitas dapat menjelaskan bagaimana pusat studi mendukung:
+          </p>
+          <ul class="center-list">
+            <li>Ruang riset tematik dan proyek lintas disiplin.</li>
+            <li>Akses ke data, laboratorium, dan infrastruktur riset tertentu.</li>
+            <li>Keterlibatan mahasiswa dalam kegiatan kajian, policy brief, dan proyek mitra.</li>
+            <li>Jalur magang riset atau research assistantship untuk mahasiswa S2/S3.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Karena pusat studi tidak berada langsung di bawah SPs, link yang disajikan di sini dapat
+            diarahkan ke halaman resmi masing-masing pusat studi di tingkat universitas.
+          </p>
+        </article>
+
+        <aside class="facility-side">
+          <strong>Contoh Kategori Pusat Studi (Ilustratif)</strong>
+          <div class="center-links-grid">
+            <div class="center-card">
+              <div class="center-card-title">Pusat Studi Iklim & Bencana</div>
+              <div class="center-card-desc">
+                Fokus pada analisis risiko iklim, bencana, dan kebijakan adaptasi
+                – link ke situs resmi pusat studi.
+              </div>
+            </div>
+            <div class="center-card">
+              <div class="center-card-title">Pusat Studi Pangan & Gizi</div>
+              <div class="center-card-desc">
+                Mendukung riset ketahanan pangan, nutrisi, dan sistem pangan berkelanjutan.
+              </div>
+            </div>
+            <div class="center-card">
+              <div class="center-card-title">Pusat Studi Lingkungan & Kehutanan</div>
+              <div class="center-card-desc">
+                Menyediakan platform riset ekosistem, konservasi, dan jasa lingkungan.
+              </div>
+            </div>
+            <div class="center-card">
+              <div class="center-card-title">Pusat Studi Sosial & Kebijakan</div>
+              <div class="center-card-desc">
+                Menghubungkan riset kebijakan publik dengan praktik tata kelola di lapangan.
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:0.6rem;font-size:0.8rem;">
+            Pada implementasi penuh, setiap kartu dapat berisi tombol “Kunjungi situs” yang mengarah
+            ke halaman resmi pusat studi terkait.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

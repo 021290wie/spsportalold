@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beasiswa – Graduate Scholarship Collaboration Office SPs IPB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Tambahan khusus halaman BEASISWA ===== */
+
+    .hero-scholar {
+      padding: 2.2rem 1.25rem 2.6rem;
+      background: radial-gradient(circle at top left, #0ea5e9 0, #0b1120 55%, #020617 100%);
+      color: #e5e7eb;
+    }
+    .hero-scholar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.7rem;
+      align-items: stretch;
+    }
+    .hero-scholar-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hero-scholar-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a5b4fc;
+    }
+    .hero-scholar-main h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw, 2.5rem);
+      color: #f9fafb;
+    }
+    .hero-scholar-main p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #e5e7eb;
+      max-width: 36rem;
+    }
+    .hero-scholar-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+    .hero-scholar-tag {
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(191,219,254,0.9);
+      background: rgba(15,23,42,0.7);
+      color: #e0f2fe;
+    }
+    .hero-scholar-actions {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.86rem;
+    }
+    .hero-scholar-note {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      max-width: 34rem;
+    }
+
+    .hero-scholar-side {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.9);
+      box-shadow: 0 24px 46px rgba(15,23,42,0.75);
+      background: #020617;
+      display: grid;
+      grid-template-rows: 1.4fr 1.1fr;
+    }
+    .hero-scholar-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.96;
+    }
+    .hero-scholar-side-bottom {
+      padding: 0.85rem 1rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: linear-gradient(to right, rgba(15,23,42,0.98), rgba(15,23,42,0.7));
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+      gap: 0.7rem;
+      align-items: center;
+    }
+    .hero-scholar-pill {
+      display:inline-block;
+      padding:0.12rem 0.55rem;
+      border-radius:999px;
+      background:#22c55e;
+      color:#052e16;
+      font-size:0.75rem;
+      margin-bottom:0.25rem;
+    }
+
+    /* SUBNAV BEASISWA */
+    .subnav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.8rem 1.25rem 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .subnav-link {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: #4b5563;
+      white-space: nowrap;
+    }
+    .subnav-link:hover {
+      border-color: var(--primary);
+      color: var(--primary-deep);
+      text-decoration: none;
+    }
+    .subnav-link.active {
+      background: #0ea5e9;
+      border-color: #0284c7;
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    /* LAYOUT UMUM BAGIAN */
+    .scholar-two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .scholar-panel {
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-light);
+    }
+    .scholar-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+    .scholar-side {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #f9fafb;
+      border: 1px dashed #d1d5db;
+      font-size: 0.84rem;
+    }
+    .scholar-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: #374151;
+    }
+
+    /* GRID 3 – JENIS BEASISWA */
+    .scholar-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .scholar-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 22px rgba(148,163,184,0.22);
+    }
+    .scholar-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    /* TIMELINE PROSES */
+    .timeline {
+      margin-top: 0.5rem;
+      border-left: 2px solid #e5e7eb;
+      padding-left: 0.9rem;
+      font-size: 0.82rem;
+    }
+    .timeline-item {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -0.95rem;
+      top: 0.3rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #0ea5e9;
+    }
+
+    /* GRID 3 – LAYANAN OFFICE */
+    .office-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      font-size: 0.84rem;
+    }
+    .office-card {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 0.95rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      box-shadow: 0 10px 22px rgba(129,140,248,0.25);
+    }
+    .office-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.96rem;
+    }
+
+    /* FAQ & RESOURCE */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr);
+      gap: 1.2rem;
+      font-size: 0.86rem;
+    }
+    .faq-item {
+      margin-bottom: 0.6rem;
+    }
+    .faq-question {
+      font-weight: 600;
+      font-size: 0.86rem;
+      margin-bottom: 0.15rem;
+      color: #111827;
+    }
+    .faq-answer {
+      font-size: 0.84rem;
+      color: #4b5563;
+    }
+    .resource-panel {
+      border-radius: var(--radius-xl);
+      padding: 1rem 1.1rem;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      color: #e5e7eb;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.6);
+      font-size: 0.84rem;
+    }
+    .resource-panel h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+    .resource-list {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 960px) {
+      .hero-scholar-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .hero-scholar-side-bottom {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .scholar-two-col,
+      .faq-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .scholar-grid-3,
+      .office-grid-3 {
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scholar-grid-3,
+      .office-grid-3 {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="#">For Prospective Students</a>
+      <a href="#">English</a>
+      <a href="#">Bahasa Indonesia</a>
+    </div>
+    <div class="topbar-right">
+      <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+      <a href="internasional.html" class="btn-small">International Opportunities</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <!--<div class="logo-circle">IPB</div>-->
+        <div class="nav-title">
+          <!--<span>SEKOLAH PASCASARJANA</span>
+          <span>IPB University</span>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+        </div>
+        
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" >Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="pendidikan.html">Pendidikan</a>
+        <a href="penelitian.html">Penelitian</a>
+        <a href="pengabdian.html">Pengabdian</a>
+        <a href="mahasiswa.html">Mahasiswa</a>
+        <a href="internasional.html">Internasional</a>
+        <a href="beasiswa.html"  class="active">Kerjasama & Beasiswa</a>
+        <!--<a href="#">Publikasi & Dampak</a>-->
+        <a href="dosen.html">Dosen</a>
+        <a href="fasilitas.html">Fasilitas</a>
+        <a href="alumni.html">Alumni</a>
+        <!--<a href="#">Berita & Agenda</a>
+        <a href="#">Kontak & Layanan</a>
+        <a href="#">Admisi</a>
+        <a href="#">PPID</a>-->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO BEASISWA -->
+  <section class="hero-scholar">
+    <div class="hero-scholar-inner">
+      <div class="hero-scholar-main">
+        <div class="hero-scholar-label">GRADUATE SCHOLARSHIP COLLABORATION OFFICE</div>
+        <h1>Beasiswa & Fellowship Mahasiswa Pascasarjana IPB</h1>
+        <p>
+          Halaman ini mengintegrasikan informasi beasiswa nasional, internasional, dan internal IPB
+          dengan layanan pendampingan aplikasi yang disediakan oleh Graduate Scholarship Collaboration
+          Office Sekolah Pascasarjana.
+        </p>
+        <div class="hero-scholar-tags">
+          <span class="hero-scholar-tag">National scholarships</span>
+          <span class="hero-scholar-tag">International fellowships</span>
+          <span class="hero-scholar-tag">Proposal & CV coaching</span>
+          <span class="hero-scholar-tag">Strategic publication planning</span>
+        </div>
+        <div class="hero-scholar-actions">
+          <button class="hero-btn-primary" onclick="document.getElementById('types').scrollIntoView({behavior:'smooth'})">
+            Jenis Beasiswa & Skema
+          </button>
+          <button class="hero-btn-secondary" onclick="document.getElementById('office').scrollIntoView({behavior:'smooth'})">
+            Layanan Scholarship Office
+          </button>
+        </div>
+        <div class="hero-scholar-note">
+          Dalam implementasi penuh, daftar beasiswa dapat ditarik dari database IPB dan diperbarui
+          secara berkala dengan jadwal, persyaratan, dan link pendaftaran resmi.
+        </div>
+      </div>
+      <aside class="hero-scholar-side">
+        <img src="img/RFQ_5427.JPG" alt="Beasiswa Pascasarjana" />
+        <div class="hero-scholar-side-bottom">
+          <div>
+            <span class="hero-scholar-pill">Funding your graduate study</span><br />
+            Kombinasi beasiswa, dukungan riset, dan fellowship memungkinkan mahasiswa S2/S3 untuk
+            fokus pada riset dan publikasi, sekaligus membangun jejaring internasional.
+          </div>
+          <div>
+            <strong style="font-size:0.85rem;">Fokus layanan:</strong><br />
+            • Pemetaan peluang pendanaan<br />
+            • Pendampingan aplikasi & dokumen<br />
+            • Integrasi dengan rencana studi & karier
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SUBNAV -->
+  <div class="subnav">
+    <a href="#overview" class="subnav-link active">Overview</a>
+    <a href="#types" class="subnav-link">Jenis Beasiswa</a>
+    <a href="#office" class="subnav-link">Layanan Scholarship Office</a>
+    <a href="#process" class="subnav-link">Proses & Timeline</a>
+    <a href="#faq" class="subnav-link">FAQ & Resource</a>
+  </div>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2><span class="icon">🎓</span> Gambaran Umum Pendanaan Studi Pascasarjana</h2>
+      <p class="section-intro">
+        SPs IPB mendukung mahasiswa S2 dan S3 untuk mengakses pendanaan studi melalui berbagai skema
+        beasiswa, hibah riset, dan fellowship, baik di tingkat nasional maupun internasional.
+      </p>
+      <p style="font-size:0.9rem;">
+        Graduate Scholarship Collaboration Office berperan sebagai pusat informasi dan konsultasi
+        yang membantu mahasiswa dan calon mahasiswa memetakan peluang pendanaan, menyiapkan dokumen
+        aplikasi yang kompetitif, serta menyelaraskan rencana studi, topik riset, dan target publikasi
+        dengan persyaratan beasiswa.
+      </p>
+    </section>
+
+    <!-- JENIS BEASISWA -->
+    <section id="types">
+      <h2><span class="icon">💰</span> Jenis Beasiswa & Skema Pendanaan</h2>
+      <p class="section-intro">
+        Beragam skema pendanaan dapat diakses oleh mahasiswa SPs IPB, mulai dari beasiswa penuh,
+        bantuan biaya SPP, hingga fellowship riset dan mobilitas.
+      </p>
+
+      <div class="scholar-grid-3">
+        <article class="scholar-card">
+          <h3>Beasiswa Nasional & Internal IPB</h3>
+          <p>
+            Contoh kategori (ilustratif):
+          </p>
+          <ul class="scholar-list" style="margin-top:0.3rem;">
+            <li>Beasiswa pemerintah pusat dan lembaga nasional.</li>
+            <li>Skema pendanaan kementerian/lembaga untuk ASN atau pegawai mitra.</li>
+            <li>Beasiswa internal IPB atau unit tertentu untuk mahasiswa berprestasi.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Setiap skema dapat ditautkan ke halaman detail dengan syarat, benefit, dan jadwal seleksi.
+          </p>
+        </article>
+
+        <article class="scholar-card">
+          <h3>Beasiswa Internasional & Fellowship</h3>
+          <p>
+            Termasuk skema:
+          </p>
+          <ul class="scholar-list" style="margin-top:0.3rem;">
+            <li>Beasiswa penuh untuk studi S2/S3 di luar negeri.</li>
+            <li>Joint programme dan co-tutelle dengan pendanaan bersama.</li>
+            <li>Fellowship riset jangka pendek (visiting researcher, sandwich, dsb.).</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Scholarship Office dapat membantu memetakan skema sesuai bidang riset dan tahap karier.
+          </p>
+        </article>
+
+        <article class="scholar-card">
+          <h3>Skema Pendanaan Riset & Mobilitas</h3>
+          <p>
+            Selain beasiswa studi, terdapat pula:
+          </p>
+          <ul class="scholar-list" style="margin-top:0.3rem;">
+            <li>Hibah riset untuk tesis/disertasi.</li>
+            <li>Dana konferensi dan publikasi.</li>
+            <li>Dukungan mobilitas untuk summer school, field course, dan workshop.</li>
+          </ul>
+          <p style="margin-top:0.4rem;font-size:0.82rem;">
+            Informasi ini dapat diintegrasikan dengan halaman <a href="penelitian.html">Penelitian</a> dan
+            <a href="internasional.html">Internasional</a>.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- LAYANAN SCHOLARSHIP OFFICE -->
+    <section id="office">
+      <h2><span class="icon">🏛️</span> Layanan Graduate Scholarship Collaboration Office</h2>
+      <p class="section-intro">
+        Graduate Scholarship Collaboration Office berfungsi sebagai “one-stop service” untuk
+        perencanaan dan pendampingan beasiswa mahasiswa pascasarjana.
+      </p>
+
+      <div class="scholar-two-col">
+        <article class="scholar-panel">
+          <h3>Peran Utama & Sasaran Layanan</h3>
+          <p>
+            Beberapa peran kunci (ilustratif) yang dapat dijelaskan:
+          </p>
+          <ul class="scholar-list">
+            <li>Memetakan peluang beasiswa sesuai bidang dan profil mahasiswa.</li>
+            <li>Menyusun strategi aplikasi (waktu, skema, dan kombinasi sumber pendanaan).</li>
+            <li>Mendampingi penyusunan proposal riset dan esai motivasi.</li>
+            <li>Memberikan umpan balik atas CV, LoR, dan dokumen pendukung lainnya.</li>
+            <li>Berkoordinasi dengan program studi, dosen pembimbing, dan unit internasional IPB.</li>
+          </ul>
+        </article>
+
+        <aside class="scholar-side">
+          <strong>Format Layanan</strong>
+          <p style="margin-top:0.4rem;">
+            Layanan dapat disajikan dalam beberapa bentuk:
+          </p>
+          <ul class="scholar-list">
+            <li>Klinik beasiswa berkala (online/offline).</li>
+            <li>Sesi bimbingan individu dan kelompok kecil.</li>
+            <li>Workshop penulisan proposal dan publikasi.</li>
+            <li>Newsletter berkala peluang beasiswa & fellowship.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Informasi jadwal dan cara mendaftar layanan ini dapat ditampilkan di bagian Proses & Timeline.
+          </p>
+        </aside>
+      </div>
+
+      <div style="margin-top:1.2rem;" class="office-grid-3">
+        <article class="office-card">
+          <h3>1. Mapping Peluang</h3>
+          <p>
+            Membantu mahasiswa mengidentifikasi:
+          </p>
+          <ul class="scholar-list" style="margin-top:0.3rem;">
+            <li>Skema yang cocok dengan usia karier dan profil akademik.</li>
+            <li>Sinkronisasi antara topik riset dan mandat donor.</li>
+            <li>Kombinasi beasiswa dan hibah riset yang memungkinkan.</li>
+          </ul>
+        </article>
+
+        <article class="office-card">
+          <h3>2. Coaching Dokumen</h3>
+          <p>
+            Pendampingan intensif untuk:
+          </p>
+          <ul class="scholar-list" style="margin-top:0.3rem;">
+            <li>Proposal riset dan research statement.</li>
+            <li>CV akademik dan professional profile.</li>
+            <li>Motivation letter dan statement of purpose.</li>
+          </ul>
+        </article>
+
+        <article class="office-card">
+          <h3>3. Alignment Studi & Publikasi</h3>
+          <p>
+            Memastikan rencana studi, riset, dan output (publikasi, policy brief) selaras dengan:
+          </p>
+          <ul class="scholar-list" style="margin-top:0.3rem;">
+            <li>Persyaratan progres beasiswa.</li>
+            <li>Target output IPB dan program studi.</li>
+            <li>Rencana karier jangka menengah mahasiswa.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROSES & TIMELINE -->
+    <section id="process">
+      <h2><span class="icon">🧭</span> Proses Layanan & Timeline Aplikasi</h2>
+      <p class="section-intro">
+        Proses layanan dapat dirangkum dalam beberapa langkah sederhana agar mudah diikuti oleh
+        mahasiswa dan calon mahasiswa.
+      </p>
+
+      <div class="scholar-two-col">
+        <article class="scholar-panel">
+          <h3>Langkah-Langkah Umum (Ilustratif)</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>1. Konsultasi Awal</strong><br />
+              Diskusi singkat mengenai profil, rencana studi, dan minat beasiswa.
+            </div>
+            <div class="timeline-item">
+              <strong>2. Pemetaan Skema</strong><br />
+              Menyusun daftar prioritas beasiswa/fellowship dan jadwal penting.
+            </div>
+            <div class="timeline-item">
+              <strong>3. Penyusunan Dokumen</strong><br />
+              Menyiapkan proposal, CV, esai, dan dokumen pendukung dengan bimbingan.
+            </div>
+            <div class="timeline-item">
+              <strong>4. Review & Finalisasi</strong><br />
+              Review oleh tim Office dan, bila relevan, pembimbing akademik.
+            </div>
+            <div class="timeline-item">
+              <strong>5. Pengiriman & Tindak Lanjut</strong><br />
+              Pengiriman aplikasi dan pemantauan status; persiapan wawancara bila diperlukan.
+            </div>
+          </div>
+        </article>
+
+        <aside class="scholar-side">
+          <strong>Integrasi dengan Kalender Akademik</strong>
+          <p style="margin-top:0.4rem;">
+            Timeline layanan dapat disesuaikan dengan:
+          </p>
+          <ul class="scholar-list">
+            <li>Periode penerimaan mahasiswa baru SPs IPB.</li>
+            <li>Jadwal pendaftaran beasiswa nasional & internasional.</li>
+            <li>Fase-fase penting dalam studi (awal masuk, pra-riset, menjelang kelulusan).</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.84rem;">
+            Dalam implementasi penuh, kalender interaktif dapat ditautkan dari sistem informasi IPB
+            atau platform eksternal.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ & RESOURCE -->
+    <section id="faq">
+      <h2><span class="icon">📚</span> FAQ & Resource Pendukung</h2>
+      <p class="section-intro">
+        Bagian ini memberikan jawaban singkat untuk pertanyaan umum dan mengarahkan pengunjung ke
+        resource yang lebih detail.
+      </p>
+
+      <div class="faq-grid">
+        <article class="scholar-panel">
+          <h3>Pertanyaan yang Sering Diajukan</h3>
+
+          <div class="faq-item">
+            <div class="faq-question">Apakah saya harus sudah diterima di SPs IPB sebelum mendaftar beasiswa?</div>
+            <div class="faq-answer">
+              Tergantung skema beasiswa. Beberapa mengharuskan LoA dari IPB terlebih dahulu, sementara
+              yang lain memperbolehkan pendaftaran paralel. Scholarship Office dapat membantu membaca
+              ketentuan masing-masing skema.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">Apakah beasiswa selalu menanggung seluruh biaya studi?</div>
+            <div class="faq-answer">
+              Tidak selalu. Ada beasiswa penuh, sebagian (misalnya hanya SPP atau biaya hidup), dan
+              skema top-up untuk menambah pendanaan riset. Kombinasi beberapa sumber pendanaan bisa
+              diatur sepanjang sesuai dengan aturan masing-masing donor.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">Bisakah saya mengajukan beasiswa setelah memulai studi?</div>
+            <div class="faq-answer">
+              Banyak skema yang terbuka untuk mahasiswa yang sudah memulai studi, terutama untuk
+              pendanaan riset, mobilitas, atau perpanjangan studi tertentu. Perencanaan waktu tetap
+              penting agar output akademik dan persyaratan beasiswa dapat terpenuhi.
+            </div>
+          </div>
+        </article>
+
+        <aside class="resource-panel">
+          <h3>Resource & Tautan Terkait</h3>
+          <p>
+            Beberapa resource yang dapat ditautkan (ilustratif):
+          </p>
+          <ul class="resource-list">
+            <li>Halaman resmi beasiswa nasional (pemerintah/lembaga).</li>
+            <li>Portal beasiswa dan fellowship internasional.</li>
+            <li>Panduan penulisan proposal dan CV akademik.</li>
+            <li>Template dokumen (proposal, motivation letter, dsb.).</li>
+            <li>Kontak Graduate Scholarship Collaboration Office SPs IPB.</li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.8rem;">
+            Resource dapat diperbarui secara berkala sesuai siklus beasiswa dan kebijakan terbaru.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <!--<div class="logo-circle">IPB</div>-->
+          <img src="img/logosps.png" width="250px" padding-top="10px" alt="Logo SPs" />
+          <!--<div>
+            <span>Sekolah Pascasarjana IPB University</span><br />
+            <small>Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680</small>
+          </div><-->
+        </div>
+        <div style="margin-top:0.75rem;color:#9ca3af;font-size:0.78rem;">
+          Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+          Informasi Umum · Telp: (0251) 8622961 · Email: sps@apps.ipb.ac.id
+        </div>
+
+                  
+
+  
+  <div style="
+    display:flex;
+    justify-content:left;
+    gap:8px;margin-top: 10px;
+  ">
+    
+    <!-- Facebook -->
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.5V12h2.5V9.8c0-2.5
+        1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6
+        1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+         <!-- Frame -->
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"/>
+    <!-- Camera circle -->
+    <circle cx="12" cy="12" r="4"/>
+    <!-- Small dot -->
+    <circle cx="17.5" cy="6.5" r="1"/>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+      style="
+        width:42px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        background:#1f2933;
+        text-decoration:none;
+        transition:0.3s;
+      "
+      onmouseover="this.style.background='#3CC9FF'"
+      onmouseout="this.style.background='#1f2933'"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+        <path d="M23 7.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9
+        C17.7 3.5 12 3.5 12 3.5s-5.7 0-8.3.4c-.4.1-1.2.1-1.9.9
+        -.6.7-.8 2.4-.8 2.4S1 9.1 1 11v1.9c0 1.9.2 3.8.2
+        3.8s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.4.1 6 .4 8 .4
+        s5.7 0 8.3-.4c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8
+        -2.4s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8
+        14.8V9.2l5.5 2.8-5.5 2.8z"/>
+      </svg>
+    </a>
+
+  </div>
+
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="pendidikan.html">Pendidikan</a>
+          <a href="penelitian.html">Penelitian</a>
+          <a href="mahasiswa.html">Mahasiswa</a>
+          <a href="internasional.html">Internasional</a>
+          <a href="beasiswa.html">Beasiswa</a>
+          <a href="dosen.html">Dosen</a>
+          <a href="fasilitas.html">Fasilitas</a>
+          <a href="alumni.html">Alumni</a>
+        </div>
+        <br /><br />
+        <div class="footer-meta">
+          <br />
+          © 2025 Sekolah Pascasarjana IPB University – Graduate School Portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

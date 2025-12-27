@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sekolah Pascasarjana IPB University Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --primary: #0f172a; /* Slate 900 */
+  --primary-accent: #0284c7; /* Sky 600 */
+  --secondary: #fbbf24; /* Amber 400 */
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --gradient-hero: linear-gradient(135deg, #2a0f0f 0%, #3b1e1e 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========== TOPBAR ========== */
+.topbar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.topbar-left,
+.topbar-right {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.topbar a:hover {
+  color: var(--primary-accent);
+}
+
+.btn-small {
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--primary-accent);
+  font-weight: 600;
+}
+
+.btn-small:hover {
+  background: var(--primary-accent);
+  color: white !important;
+}
+
+/* ========== NAVBAR ========== */
+header {
+  background: rgba(255, 255, 255, 0.95); /* Dark background for logo contrast */
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.nav-left img {
+  height: 50px;
+  width: auto;
+}
+
+.main-menu {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.menu-item {
+  position: relative;
+  font-weight: 600;
+  color: #570000; /* Light text for dark navbar */
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.menu-item:hover {
+  color: var(--secondary);
+}
+
+.menu-item a.active {
+  color: #000000;
+}
+
+.menu-item i {
+  font-size: 0.7em;
+  margin-left: 4px;
+  color: #94a3b8;
+}
+
+/* Mega Menu */
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-surface);
+  color: var(--text-main); /* Reset text color for dropdown */
+  min-width: 600px;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mega-column h4 {
+  /*color: var(--primary-accent);*/
+  color:#570000;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.mega-column a {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.mega-column a:hover {
+  color: var(--text-main);
+  transform: translateX(5px);
+}
+.cta-btn {
+  background: var(--primary-accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.cta-btn:hover {
+  background: #0369a1;
+  transform: translateY(-2px);
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  background: var(--gradient-hero);
+  color: white;
+  padding: 5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Abstract shapes background */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(2, 132, 199, 0.2) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  border-radius: 50%;
+}
+
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-kicker {
+  color: var(--secondary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  backdrop-filter: blur(5px);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-btn-primary {
+  background: var(--secondary);
+  color: var(--primary);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  background: white;
+  color: var(--primary);
+}
+
+/* Hero Image/Slider Container */
+.hero-side {
+  position: relative;
+  height: 450px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+/* ========== MAIN CONTENT ========== */
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+section {
+  margin-bottom: 6rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* ========== CARDS (Overview) ========== */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.overview-card {
+  background: var(--bg-surface);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.overview-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-accent);
+}
+
+.overview-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.overview-card:hover::before {
+  transform: scaleX(1);
+}
+
+.overview-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.overview-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.overview-desc {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.overview-link {
+  color: var(--primary-accent);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ========== FEATURED SECTIONS (Edu, Research) ========== */
+.edu-grid,
+.research-grid,
+.facility-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.content-box {
+  background: var(--bg-surface);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.content-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.feature-list {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.feature-list li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-main);
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+.side-image-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 100%;
+  min-height: 300px;
+}
+
+.side-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.side-image-box:hover img {
+  transform: scale(1.05);
+}
+
+/* ========== PEOPLE GRID ========== */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.people-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.people-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.people-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.people-body {
+  padding: 1.5rem;
+}
+
+.people-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--primary);
+  color: white;
+  padding: 5rem 1.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+}
+
+.footer-brand img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: var(--secondary);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  background: var(--primary-accent);
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-inner,
+  .edu-grid,
+  .research-grid,
+  .facility-grid,
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main-menu {
+    display: none; /* Mobile menu would go here */
+  }
+}
+
+/* ========== TABS COMPONENT ========== */
+.facility-container {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: #f1f5f9;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  padding: 1rem 2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.tab-btn.active {
+  color: var(--primary-accent);
+  border-bottom-color: var(--primary-accent);
+  background: var(--bg-surface);
+}
+
+.tab-content {
+  display: none;
+  padding: 2.5rem;
+  animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.tab-text h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.tab-text p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.tab-image {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 300px;
+}
+
+.tab-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .tab-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .tab-image {
+    height: 200px;
+    order: -1; /* Image on top for mobile */
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="#">For Prospective Students</a>
+        <a href="#">English</a>
+        <a href="#">Bahasa Indonesia</a>
+      </div>
+      <div class="topbar-right">
+        <a href="beasiswa.html" class="btn-small">Graduate Scholarships</a>
+        <a href="internasional.html" class="btn-small"
+          >International Opportunities</a
+        >
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <img src="https://pascadev.ipb.ac.id/wp-content/uploads/2025/07/S-Logo-IPB-University-Vertical-Warna-Hi-scaled-500x118@2x.png" alt="Logo SPs" />
+        </div>
+        <nav class="main-menu">
+          <div class="menu-item"><a href="#" class="active">Beranda</a></div>
+          <div class="menu-item">
+            Tentang <i class="fas fa-chevron-down"></i>
+            <div class="mega-menu">
+              <div class="mega-column">
+                <h4>Tentang</h4>
+                <a href="#">Profil</a>
+                <a href="#">Pimpinan</a>
+                <a href="#">Tenaga Kependidikan</a>
+              </div>
+              <div class="mega-column">
+                <h4>&nbsp;</h4>
+                <a href="#">Dosen & Kepakaran</a>
+                <a href="#">Tata Kelola & Dokumen Resmi</a>
+                <!--<a href="#">Perikanan & Ilmu Kelautan</a>-->
+              </div>
+              <!--<div class="mega-column">
+                <h4>Info Akademik</h4>
+                <a href="#">Kalender Akademik</a>
+                <a href="#">Kurikulum</a>
+              </div>-->
+            </div>
+          </div>
+          <div class="menu-item">
+            Pendidikan <i class="fas fa-chevron-down1"></i>
+            <!--<div class="mega-menu">
+              <div class="mega-column">
+                <h4>Pusat Riset</h4>
+                <a href="#">Pusat Studi Lingkungan</a>
+                <a href="#">Pusat Studi Pangan</a>
+              </div>
+              <div class="mega-column">
+                <h4>Publikasi</h4>
+                <a href="#">Jurnal Internasional</a>
+                <a href="#">Repository IPB</a>
+              </div>
+            </div>-->
+          </div>
+          <div class="menu-item"><a href="#">Penelitian</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Pengabdian</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Mahasiswa</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Internasional</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Kerjasama & Beasiswa</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Dosen</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Fasilitas</a><i class="fas fa-chevron-down1"></i></div>
+          <div class="menu-item"><a href="#">Alumni</a><i class="fas fa-chevron-down1"></i></div>
+        </nav>
+        <div class="nav-actions">
+          <a href="#" class="cta-btn">Daftar Sekarang</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-main">
+          <div class="hero-kicker">GRADUATE SCHOOL DASHBOARD</div>
+          <h1>Portal Sekolah Pascasarjana IPB University</h1>
+          <p>
+            Akses terintegrasi untuk pendidikan, riset, jejaring mahasiswa dan
+            alumni, internasionalisasi, beasiswa, serta fasilitas pendukung
+            studi S2 dan S3.
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">Pendidikan berbasis riset</span>
+            <span class="hero-tag">Interdisipliner</span>
+            <span class="hero-tag">Kebijakan & praktik</span>
+          </div>
+          <div class="hero-actions">
+            <button
+              class="hero-btn-primary"
+              onclick="location.href='pendidikan.html'"
+            >
+              Lihat Program Pendidikan
+            </button>
+            <button
+              class="hero-btn-secondary"
+              onclick="location.href='penelitian.html'"
+            >
+              Jelajahi Riset
+            </button>
+          </div>
+        </div>
+        <aside class="hero-side">
+          <div class="slider">
+            <img src="img/DSC_0738.JPG" class="active" alt="Slide 1" />
+            <img src="img/2.jpg" alt="Slide 2" />
+            <img src="img/RFQ_0177 (1).JPG" alt="Slide 3" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <main>
+      <!-- OVERVIEW -->
+      <section id="overview">
+        <div class="section-header">
+          <h2>
+            <i
+              class="fas fa-th-large"
+              style="font-size: 0.8em; color: var(--secondary)"
+            ></i>
+            Sekilas Empat Pilar Utama
+          </h2>
+          <p>
+            Akses cepat ke informasi inti Sekolah Pascasarjana: pendidikan,
+            penelitian, kehidupan mahasiswa, dan jejaring internasional.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <article class="overview-card">
+            <div class="overview-label">Pendidikan</div>
+            <div class="overview-title">Program S2 & S3</div>
+            <div class="overview-desc">
+              Informasi program studi, kurikulum, struktur bimbingan, dan jalur
+              fast track / double degree.
+            </div>
+            <a href="pendidikan.html" class="overview-link"
+              >Lihat detail <i class="fas fa-arrow-right"></i
+            ></a>
+          </article>
+
+          <article class="overview-card">
+            <div class="overview-label">Penelitian</div>
+            <div class="overview-title">Riset & Publikasi</div>
+            <div class="overview-desc">
+              Peta riset, proyek unggulan, publikasi disertasi dan tesis, serta
+              portal output akademik.
+            </div>
+            <a href="penelitian.html" class="overview-link"
+              >Masuk ke portal <i class="fas fa-arrow-right"></i
+            ></a>
+          </article>
+
+          <article class="overview-card">
+            <div class="overview-label">Mahasiswa</div>
+            <div class="overview-title">Life as Grad Student</div>
+            <div class="overview-desc">
+              Layanan akademik, dukungan bimbingan, komunitas ilmiah, dan
+              kesempatan pengembangan diri.
+            </div>
+            <a href="mahasiswa.html" class="overview-link"
+              >Eksplor kehidupan <i class="fas fa-arrow-right"></i
+            ></a>
+          </article>
+
+          <article class="overview-card">
+            <div class="overview-label">Internasional</div>
+            <div class="overview-title">Global Engagement</div>
+            <div class="overview-desc">
+              Double/dual degree, joint supervision, visiting scholars, dan
+              kerja sama internasional.
+            </div>
+            <a href="internasional.html" class="overview-link"
+              >Lihat peluang <i class="fas fa-arrow-right"></i
+            ></a>
+          </article>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="edu">
+        <div class="section-header">
+          <h2>
+            <i
+              class="fas fa-graduation-cap"
+              style="font-size: 0.8em; color: var(--secondary)"
+            ></i>
+            Pendidikan & Beasiswa
+          </h2>
+          <p>
+            Gambaran singkat ekosistem pendidikan dan dukungan pembiayaan
+            melalui skema beasiswa nasional dan internasional.
+          </p>
+        </div>
+
+        <div class="edu-grid">
+          <div class="content-box">
+            <h3>Program S2 & S3 Berbasis Riset</h3>
+            <p style="color: var(--text-muted)">
+              Program magister dan doktor di SPs IPB mengintegrasikan penelitian
+              mutakhir, kerja sama lintas pusat studi, dan pembimbingan
+              promotor-co promotor lintas disiplin.
+            </p>
+            <ul class="feature-list">
+              <li>
+                Program S2 dengan opsi tesis, riset terapan, atau kebijakan.
+              </li>
+              <li>
+                Program S3 dengan fokus disertasi yang terkait kebijakan dan
+                proyek nyata.
+              </li>
+              <li>
+                Peluang joint supervision & co-tutelle dengan universitas mitra.
+              </li>
+            </ul>
+            <a href="pendidikan.html" class="overview-link"
+              >Lihat semua program studi <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="side-image-box">
+            <img src="img/2.jpg" alt="Belajar Pascasarjana" />
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH -->
+      <section id="research">
+        <div class="section-header">
+          <h2>
+            <i
+              class="fas fa-flask"
+              style="font-size: 0.8em; color: var(--secondary)"
+            ></i>
+            Research & Impact
+          </h2>
+          <p>
+            Dashboard singkat untuk menggambarkan kekuatan riset, publikasi, dan
+            kolaborasi dosen serta mahasiswa pascasarjana.
+          </p>
+        </div>
+
+        <div class="research-grid">
+          <div class="side-image-box">
+            <img src="img/dosen.png" alt="Riset" />
+          </div>
+          <div class="content-box">
+            <h3>Cluster Riset Interdisipliner</h3>
+            <p style="color: var(--text-muted)">
+              SPs IPB memfasilitasi berbagai riset lintas disiplin, mulai dari
+              ketahanan pangan, perubahan iklim, keanekaragaman hayati, hingga
+              tata kelola lingkungan dan kebijakan publik.
+            </p>
+            <ul class="feature-list">
+              <li>Integrasi antar pusat studi dan departemen.</li>
+              <li>Portal Publikasi & Disertasi mahasiswa dan dosen.</li>
+              <li>Kerja Sama & Konsultansi dengan lembaga internasional.</li>
+            </ul>
+            <a href="penelitian.html" class="overview-link"
+              >Masuk ke halaman Penelitian <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PEOPLE -->
+      <section id="people">
+        <div class="section-header">
+          <h2>
+            <i
+              class="fas fa-users"
+              style="font-size: 0.8em; color: var(--secondary)"
+            ></i>
+            People & Network
+          </h2>
+          <p>
+            Gambaran ringkas tentang siapa saja yang berada di ekosistem SPs IPB
+            dan bagaimana mereka terhubung satu sama lain.
+          </p>
+        </div>
+
+        <div class="people-grid">
+          <article class="people-card">
+            <img src="img/dosen.png" alt="Dosen" />
+            <div class="people-body">
+              <div class="people-title">Dosen & Promotor</div>
+              <p style="font-size: 0.9rem; color: var(--text-muted)">
+                Profil singkat, topik riset, proyek, dan afiliasi mitra.
+              </p>
+              <a
+                href="dosen.html"
+                class="overview-link"
+                style="margin-top: 1rem"
+                >Lihat direktori <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+
+          <article class="people-card">
+            <img src="img/mahasiswa1.png" alt="Mahasiswa" />
+            <div class="people-body">
+              <div class="people-title">Mahasiswa</div>
+              <p style="font-size: 0.9rem; color: var(--text-muted)">
+                Profil PhD, komunitas ilmiah, dan layanan pendukung.
+              </p>
+              <a
+                href="mahasiswa.html"
+                class="overview-link"
+                style="margin-top: 1rem"
+                >Masuk ke halaman <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+
+          <article class="people-card">
+            <img src="img/alumni1.png" alt="Alumni" />
+            <div class="people-body">
+              <div class="people-title">Alumni</div>
+              <p style="font-size: 0.9rem; color: var(--text-muted)">
+                Jaringan alumni, peta karier, dan kegiatan alumni.
+              </p>
+              <a
+                href="alumni.html"
+                class="overview-link"
+                style="margin-top: 1rem"
+                >Lihat jejaring <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+
+          <article class="people-card">
+            <img src="img/RFQ_0177 (1).JPG" alt="International" />
+            <div class="people-body">
+              <div class="people-title">International</div>
+              <p style="font-size: 0.9rem; color: var(--text-muted)">
+                Double degree, joint supervision, dan proyek global.
+              </p>
+              <a
+                href="internasional.html"
+                class="overview-link"
+                style="margin-top: 1rem"
+                >Eksplor peluang <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FACILITIES -->
+      <section id="facilities">
+        <div class="section-header">
+          <h2>
+            <i
+              class="fas fa-building"
+              style="font-size: 0.8em; color: var(--secondary)"
+            ></i>
+            Fasilitas & Layanan
+          </h2>
+          <p>
+            Ringkasan fasilitas fisik dan layanan akademik yang mendukung
+            kegiatan belajar.
+          </p>
+        </div>
+
+        <div class="facility-container">
+          <!-- Tab Navigation -->
+          <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'kelas')">
+              Ruang Kelas
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'lab')">
+              Laboratorium
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'lib')">
+              Perpustakaan
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'cowork')">
+              Co-Working Space
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div id="kelas" class="tab-content active">
+            <div class="tab-grid">
+              <div class="tab-text">
+                <h3>Ruang Kelas Modern</h3>
+                <p>
+                  Ruang kelas yang dilengkapi dengan teknologi multimedia
+                  terkini, mendukung pembelajaran hybrid dan interaktif. Desain
+                  ergonomis untuk kenyamanan diskusi dan perkuliahan jangka
+                  panjang.
+                </p>
+                <ul class="feature-list">
+                  <li>Smart Projector & Sound System</li>
+                  <li>Koneksi Internet High-Speed</li>
+                  <li>Konfigurasi Meja Fleksibel</li>
+                </ul>
+              </div>
+              <div class="tab-image">
+                <img src="img/RFQ_0177 (1).JPG" alt="Ruang Kelas" />
+              </div>
+            </div>
+          </div>
+
+          <div id="lab" class="tab-content">
+            <div class="tab-grid">
+              <div class="tab-text">
+                <h3>Laboratorium Riset Terpadu</h3>
+                <p>
+                  Akses ke berbagai laboratorium canggih di lingkungan IPB
+                  University untuk mendukung penelitian tesis dan disertasi yang
+                  berkualitas tinggi dan berdampak.
+                </p>
+                <ul class="feature-list">
+                  <li>Lab Bioteknologi & Molekuler</li>
+                  <li>Lab Analisis Lingkungan</li>
+                  <li>Lab Komputasi & Data Science</li>
+                </ul>
+              </div>
+              <div class="tab-image">
+                <img src="img/2.jpg" alt="Laboratorium" />
+              </div>
+            </div>
+          </div>
+
+          <div id="lib" class="tab-content">
+            <div class="tab-grid">
+              <div class="tab-text">
+                <h3>Perpustakaan Digital & Fisik</h3>
+                <p>
+                  Pusat sumber belajar dengan koleksi ribuan buku, jurnal
+                  internasional, dan akses ke database ilmiah global. Tempat
+                  yang tenang untuk studi literatur mendalam.
+                </p>
+                <ul class="feature-list">
+                  <li>Akses Jurnal Internasional (Scopus/WoS)</li>
+                  <li>Ruang Baca & Diskusi Privat</li>
+                  <li>Layanan Peminjaman Antar Perpustakaan</li>
+                </ul>
+              </div>
+              <div class="tab-image">
+                <img src="img/DSC_0738.JPG" alt="Perpustakaan" />
+              </div>
+            </div>
+          </div>
+
+          <div id="cowork" class="tab-content">
+            <div class="tab-grid">
+              <div class="tab-text">
+                <h3>Student Co-Working Space</h3>
+                <p>
+                  Area kolaboratif bagi mahasiswa pascasarjana untuk berdiskusi,
+                  mengerjakan proyek kelompok, atau sekadar membangun jejaring
+                  lintas disiplin ilmu.
+                </p>
+                <ul class="feature-list">
+                  <li>Lounge Area Nyaman</li>
+                  <li>Fasilitas Charging Station</li>
+                  <li>Mini Cafe & Refreshment</li>
+                </ul>
+              </div>
+              <div class="tab-image">
+                <img src="img/dosen.png" alt="Co-Working Space" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img
+            src="img/logosps.png"
+            alt="Logo SPs"
+            style="width: 200px; height: auto"
+          />
+          <p style="color: #94a3b8; font-size: 0.9rem">
+            Jl. Raya Dramaga, Kampus IPB Dramaga, Bogor 16680<br />
+            Telp: (0251) 8622961<br />
+            Email: sps@apps.ipb.ac.id
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-icon"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 style="color: white; margin-bottom: 1.5rem">Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="pendidikan.html">Pendidikan</a>
+            <a href="penelitian.html">Penelitian</a>
+            <a href="mahasiswa.html">Mahasiswa</a>
+            <a href="internasional.html">Internasional</a>
+            <a href="beasiswa.html">Beasiswa</a>
+            <a href="dosen.html">Dosen</a>
+            <a href="fasilitas.html">Fasilitas</a>
+            <a href="alumni.html">Alumni</a>
+          </div>
+          <div style="margin-top: 2rem; color: #64748b; font-size: 0.85rem">
+            2025 Sekolah Pascasarjana IPB University Graduate School Portal.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const slides = document.querySelectorAll(".slider img");
+      let index = 0;
+
+      setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+      }, 4000);
+
+      // Tab Functionality
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+
+        // Hide all tab content
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+          tabcontent[i].classList.remove("active");
+        }
+
+        // Remove active class from all buttons
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        // Small timeout to allow display:block to apply before adding active class for animation
+        setTimeout(() => {
+          document.getElementById(tabName).classList.add("active");
+        }, 10);
+        evt.currentTarget.className += " active";
+      }
+    </script>
+  </body>
+</html>
